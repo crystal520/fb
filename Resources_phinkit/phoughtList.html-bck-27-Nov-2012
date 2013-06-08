@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<!-- saved from url=(0073)http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  	<style>
+  		
+body { font: 0.8em Arial, sans-serif; }
+                .praiseContainer{float:left;position: relative; width: 40px; margin: 25px 10px 0 0;}
+                .praiseContainer img{vertical-align: bottom;}
+                .supPraise{position: absolute;top:-15px; right:0; padding: 2px; color: #fff; min-width: 12px; text-align: center; border: solid 2px #fff;}
+                .cmntArea{background:url('textareabg.png') no-repeat; width: 200px; color:#fff;  padding: 5px; border: 1px solid #464648; border-radius: 5px;}
+                .adcomentBtn{clear:both;float:right;width: 113px; height: 24px; background: url('adcoment.png') no-repeat; margin: 10px 7px 0 0;}
+                
+.memex_user{color:#98bf1a;text-decoration:none;font-size: 10px;margin: 0 0 0 0;}  
+          #loading {
+background:#000 url('ajax-loader.gif') no-repeat center center;
+height: 340px;
+width: 280px;
+position: fixed;
+background-color:  '#c0c0c0';
+opacity: 0.5;
+z-index: 9999;
+} 
+
+.wrap{height: 100%;
+width: 260px; margin:0 auto; height: 340px; border:0px solid red; }
+
+
+.phots_user{ width:100%; padding:10px; border-bottom:1px solid #ccc; float:left;}
+.phots_user .user_img{ float:left; width:42px; margin:0 10px 0 0;}
+.phots_user .user_img {}
+.phots_user .discription{ float:right; width:200px; border:0px solid red;}
+.phots_user .discription .heading {   border: 0 solid red;  color: #666666; float: left; font-family: open sans;  font-size: 11px; font-weight: bold;    width: 184px;}
+.phots_user .discription .heading a{color:#8BB325; text-decoration:none; font-family: open sans;   font-size: 12px; }
+.phots_user .discription .heading a:hover{text-decoration:underline;}
+.phots_user .discription .hd{ float:left;width:100%;}
+.phots_user .discription .hd a{color:#8BB325; text-decoration:none; padding:5px 0; font-weight:bold; font-family: open sans; font-size: 11px; display:block;}
+.phots_user .discription .hd a:hover{text-decoration:underline;}
+.phots_user .discription .hd_txt{ padding:5px 0;}
+
+.phots_user .discription .close{ float:right; margin:14px 0 0  0;}
+
+.phots_user .discription .thot{float:left; width:207px; }
+.phots_user .discription .thot_top{float:left; width:100%; border:0px solid red; height:7px; background:url(thoughtbox-top.png) no-repeat;}
+.phots_user .discription .thot_mid{float:left; border:0px solid red; background:url(thoughtbox-mid.png) repeat-y;  width:100%;}
+.phots_user .discription .thot_mid .txt { padding:2px 8px 8px 11px; float:left;}
+.phots_user .discription .thot_mid .count {  float: right;  margin: 0 10px 0 0; width: 24px;}
+.phots_user .discription .thot_mid .count .no{ float:left; width:11px;}
+.phots_user .discription .thot_mid .count .no a{color:#8BB325; font-weight:bold; font-family: open sans; font-size: 11px; }
+.phots_user .discription .thot_mid .count .hand{ float:left;}
+.phots_user .discription .thot_botom{float:left; width:100%; border:0px solid red; height:14px;background:url(thoughtbox-bottom.png) no-repeat;}
+.phots_user .discription .respond{ float:right; margin:14px 0 0  0; width:50px;}
+.phots_user .discription .respond a{color:#8BB325; text-decoration:none; font-weight:bold; font-family: open sans; font-size: 11px;}
+.phots_user .discription .respond a:hover{text-decoration:underline;}
+.phots_user .discription .post_images{ padding:0;}
+.phots_user .discription .post_images li { float: left;  list-style: none outside none; margin: 0 10px 0 0;  width: 90px;}
+.phots_user .discription .post_images li img {    border: 1px solid #E4E4E4;  height: 60px;  width: 85px; padding:2px;}
+.ul_comnts { padding:0;  list-style: none;}
+.ul_comnts li { width:100%; float:left;margin-bottom: 5px; list-style: none}
+.ul_comnts li .coments{ background-color: #EAF2D5;    float: left; padding:5px; width:99%;   }
+.ul_comnts li .coments .user_img{float:left; width:30px; margin:4px 10px 0 0;}
+.ul_comnts li .coments .user_img img{ width:25px; height:25px;}
+.ul_comnts li .coments .descrip{ float:left; width:100px;}
+.ul_comnts li .coments .descrip p{ margin:0; padding:0;}
+.ul_comnts li .coments .descrip p a {color: #8BB325;font-family: open sans;font-size: 11px; text-decoration: none; font-weight:bold;}
+.ul_comnts li .coments .descrip p a:hover{text-decoration:underline;}
+.ul_comnts li .coments .count {  float: right;  margin: 5px 5px 0 0; width: 24px;}
+.ul_comnts li .coments .count .no{ float:left; width:11px;}
+.ul_comnts li .coments .count .no a{color:#8BB325; font-weight:bold; font-family: open sans; font-size: 11px; }
+
+.ul_comnts li .coments .count .hand{ float:left;}
+
+</style>
+
+<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	
+	  var request = $.ajax({
+		    type: "POST",
+		    url: "http://phinkit.aspnetdevelopment.in/Phinkit.svc/json/GetHomeStreamAllDataList2",
+		    data: parameters,
+		    contentType: "application/json; charset=utf-8",
+		    dataType: "json",
+	  });
+      
+      var UsrId = userid;
+	  
+	  request.success(function(data)
+	  {
+	  		var parsed_data = data;
+	  			$('.wrap').html('');
+	        	if(parsed_data.status == 'Success')
+	        	{
+	        		var  AllDataListObj = parsed_data.AllDataList;
+	        		if(AllDataListObj != null)
+	        		{
+	        			var subAllDataListObj = AllDataListObj.subAllDataList;
+	        			if(subAllDataListObj != null)
+	        			{
+	        				
+	        				//**showing data of home screen
+	        				for(var i = 0; i < subAllDataListObj.length; i++)
+	        				{
+	        					var userName = 'Rahul';
+	        					var userImagePath = 'not found';
+	        					var description = '';
+	        					var content = '';
+	        					
+	        					var listObj = subAllDataListObj[i];
+	        					var TypeHomeStreamConnectionListObj = listObj.TypeHomeStreamConnectionList;
+	        					var TypeHomeStreamPhoughtListObj = listObj.TypeHomeStreamPhoughtList;
+	        					var TypeHomeStreamProfileEditListObj = listObj.TypeHomeStreamProfileEditList;
+	        					var TypeMemexListObj = listObj.TypeMemexList;
+	        					
+	        					if(TypeHomeStreamProfileEditListObj != null)
+	        					{ 
+	        						var profileEditedUserId = TypeHomeStreamProfileEditListObj[0].UserId;
+	        						userName = TypeHomeStreamProfileEditListObj[0].User;
+	        						userImagePath = TypeHomeStreamProfileEditListObj[0].ImagePath;
+	        						var updated_fields = TypeHomeStreamProfileEditListObj[0].UpdatedFields;
+	        						var title = '';
+	        							
+	        						if(profileEditedUserId == UsrId)
+	        						{
+	        							userName = 'You';
+	        							title = 'have updated ' + updated_fields;
+	        						}
+	        						else
+	        						{
+	        							userName = userName;
+	        							title = 'has updated ' + updated_fields;
+	        						}
+	        						
+	        						description = '<p class="heading"><a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#">'+ userName + '</a> has updated '+ updated_fields +' </p>'; 
+	        						
+	        					}
+	        					
+	        					
+	        					
+	        					
+	        					if(TypeHomeStreamPhoughtListObj != null)
+	        					{
+	        						userId = TypeHomeStreamPhoughtListObj[0].PhoughtUserID;
+	        						userName = TypeHomeStreamPhoughtListObj[0].PhoughtUser;
+	        						userImagePath = TypeHomeStreamPhoughtListObj[0].ImagePath;
+	        						var Phought = TypeHomeStreamPhoughtListObj[0].Phought;
+	        						
+	        						if(userId == UsrId)
+	        						{
+	        							userName = 'You';
+	        							
+	        						}
+	        						else
+	        						{
+	        							userName = userName;
+	        							
+	        						}
+	        						
+	        						var content = '<div class="phots_user"><div class="user_img"> <a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#"><img src="'+ userImagePath +'" width="42" height="42" alt="user"></a></div>';
+	        						
+	        						description = '<div class="discription"> <p class="heading"> <a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#">'+userName+' has a Phought</p> <span class="close"><a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#"><img src="./phoughtList_files/delet.png" width="15" height="15" alt="close"></a></span> <div class="thot"> <div class="thot_top"></div> <div class="thot_mid"> <span class="txt">'+ Phought +'</span> <div class="count"> <span class="no"><a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#">2</a></span> <span class="hand"><a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#"><img src="./phoughtList_files/hand_gray.png" width="13" height="15" alt="hand"></a></span> </div> </div> <div class="thot_botom"></div> </div><span class="respond"><a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#">Respond</a></span> </div> </div>';    
+   	        						
+	        					}
+	        			
+	        					content += description; 
+	        					
+	        				
+	        					$('.wrap').append(content);
+	        				}
+	        					        		   }
+	        		}
+	        	}
+	        	else
+	        	{
+	        		alert('Some Error Occure With Webservice');
+	        	}
+	  });
+	  	
+</script>
+
+</head>
+
+<body>
+
+<div class="wrap">
+
+  <div class="phots_user">
+		<div class="user_img"> <a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#"><img src="./phoughtList_files/user.png" width="42" height="42" alt="user"></a></div>
+		
+		<div class="discription">
+        <p class="heading">         
+<a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#">Hatim User</a> has updated profile     
+        </p>
+    </div>
+        
+</div>
+
+<div class="phots_user">
+		<div class="user_img"> <a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#"><img src="./phoughtList_files/user.png" width="42" height="42" alt="user"></a></div>
+		
+		<div class="discription">
+        <p class="heading">         
+<a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#">Hatim User</a> has updated profile     
+        </p>
+        
+        <span class="close"><a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#"><img src="./phoughtList_files/delet.png" width="15" height="15" alt="close"></a></span>
+        
+        
+        <div class="thot">        
+        <div class="thot_top"></div>
+        <div class="thot_mid">
+        <span class="txt">asdasddasd</span>
+        <div class="count">
+       <span class="no"><a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#">2</a></span>
+       <span class="hand"><a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#"><img src="./phoughtList_files/hand_gray.png" width="13" height="15" alt="hand"></a></span>
+        
+        </div>
+        
+        </div>
+        <div class="thot_botom"></div>
+        
+        </div>
+<span class="respond"><a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#">Respond</a></span>
+    </div>
+        
+</div>
+
+
+
+<div class="phots_user">
+		<div class="user_img"> <a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#"><img width="42" height="42" alt="user" src="./phoughtList_files/user.png"></a></div>
+		
+		<div class="discription">
+        <p class="heading">         
+<a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#">Hatim User</a> has updated profile     
+        </p>
+        
+        <span class="close"><a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#"><img width="15" height="15" alt="close" src="./phoughtList_files/delet.png"></a></span>
+
+<div class="hd"><a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#">Mixed Fruit from firefox</a></div>
+<span class="hd_txt">Mixed Fruit from firefox</span>
+
+
+<ul class="post_images">
+<li><img alt="user" src="./phoughtList_files/image3.jpg"></li>
+<li><img alt="user" src="./phoughtList_files/image3.jpg"></li>
+</ul>
+    </div>
+        
+</div>
+  
+  <div class="phots_user">
+		<div class="user_img"> <a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#"><img src="./phoughtList_files/user.png" width="42" height="42" alt="user"></a></div>
+		
+		<div class="discription">
+        <p class="heading">         
+<a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#">Hatim User</a> has updated profile     
+        </p>
+
+		 <div class="thot">        
+        <div class="thot_top"></div>
+        <div class="thot_mid">
+        <span class="txt">asdasddasd</span>
+        <div class="count">
+       <span class="no"><a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#">2</a></span>
+       <span class="hand"><a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#"><img src="./phoughtList_files/hand_gray.png" width="13" height="15" alt="hand"></a></span>       
+        </div>
+        
+        </div>
+        <div class="thot_botom"></div>
+        
+        </div>
+
+<ul class="ul_comnts">
+<li>
+<div class="coments">
+<span class="user_img"><a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#"><img src="./phoughtList_files/medium.jpg" width="13" height="15" alt="hand"></a></span>
+<div class="descrip"><p><a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#">Hatim User</a> has updated profile</p>  </div>
+<div class="count">
+       <span class="no"><a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#">2</a></span>
+       <span class="hand"><a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#"><img src="./phoughtList_files/hand.png" width="13" height="15" alt="hand"></a></span>       
+        </div>
+</div>
+
+</li>
+
+<li>
+<div class="coments">
+<span class="user_img"><a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#"><img src="./phoughtList_files/medium.jpg" width="13" height="15" alt="hand"></a></span>
+<div class="descrip"><p><a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#">Hatim User</a> has updated profile</p>  </div>
+<div class="count">
+       <span class="no"><a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#">2</a></span>
+       <span class="hand"><a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#"><img src="./phoughtList_files/hand.png" width="13" height="15" alt="hand"></a></span>       
+        </div>
+</div>
+
+</li>
+
+<li>
+<div class="coments">
+<span class="user_img"><a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#"><img src="./phoughtList_files/medium.jpg" width="13" height="15" alt="hand"></a></span>
+<div class="descrip"><p><a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#">Hatim User</a> has updated profile</p>  </div>
+<div class="count">
+       <span class="no"><a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#">2</a></span>
+       <span class="hand"><a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#"><img src="./phoughtList_files/hand.png" width="13" height="15" alt="hand"></a></span>       
+        </div>
+</div>
+
+</li>
+
+
+<li>
+<div class="coments">
+<span class="user_img"><a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#"><img src="./phoughtList_files/medium.jpg" width="13" height="15" alt="hand"></a></span>
+<div class="descrip"><p><a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#">Hatim User</a> has updated profile</p>  </div>
+<div class="count">
+       <span class="no"><a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#">2</a></span>
+       <span class="hand"><a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#"><img src="./phoughtList_files/hand.png" width="13" height="15" alt="hand"></a></span>       
+        </div>
+</div>
+
+</li>
+
+<li>
+<div class="coments">
+<span class="user_img"><a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#"><img src="./phoughtList_files/medium.jpg" width="13" height="15" alt="hand"></a></span>
+<div class="descrip"><p><a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#">Hatim User</a> has updated profile</p>  </div>
+<div class="count">
+       <span class="no"><a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#">2</a></span>
+       <span class="hand"><a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#"><img src="./phoughtList_files/hand.png" width="13" height="15" alt="hand"></a></span>       
+        </div>
+</div>
+
+</li>
+
+
+</ul>
+
+
+
+
+<span class="respond"><a href="http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html#">Respond</a></span>
+    </div>
+        
+</div>  
+</div>    
+	
+
+
+</body></html>

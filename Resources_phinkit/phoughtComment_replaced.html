@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<!-- saved from url=(0073)http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  	<style>
+
+body { font: 14px Arial, sans-serif; }
+                .praiseContainer{float:left;position: relative; width: 40px; margin: 25px 10px 0 0;}
+                .praiseContainer img{vertical-align: bottom;}
+                .supPraise{position: absolute;top:-15px; right:0; padding: 2px; color: #fff; min-width: 12px; text-align: center; border: solid 2px #fff;}
+                .cmntArea{background:url('textareabg.png') no-repeat; width: 200px; color:#fff;  padding: 5px; border: 1px solid #464648; border-radius: 5px;}
+                .adcomentBtn{clear:both;float:right;width: 113px; height: 24px; background: url('adcoment.png') no-repeat; margin: 10px 7px 0 0;}
+                
+.memex_user{color:#98bf1a;text-decoration:none;font-size: 10px;margin: 0 0 0 0;}  
+          #loading {
+background:#000 url('ajax-loader.gif') no-repeat center center;
+height: 340px;
+width: 290px;
+position: fixed;
+background-color:  '#c0c0c0';
+opacity: 0.5;
+z-index: 9999;
+} 
+
+.wrap{height: 100%;
+width: 275px; margin:0 auto; border:0px solid red;}
+.phots_user{ width:100%; padding:10px 0; border-bottom:0px solid #ccc; float:left;}
+.phots_user .user_img{ float:left; width:42px; margin:0 10px 0 0;}
+.phots_user .user_img {border:1px solid #fff; border-radius:5px; width:50px; height:50px;}
+.phots_user .discription{ float:right; width:210px; border:0px solid red;}
+.phots_user .discription .heading {margin: 0px 0 0 0;border: 0px solid red;  color: #fff; float: left; font-family: open sans;  font-size: 15px; width: 184px;}
+.phots_user .discription .heading a{color:#98bf1a; text-decoration:none; font-family: open sans; font-weight:bold;  font-size: 16px; }
+.phots_user .discription .heading a:hover{text-decoration:underline;}
+.phots_user .discription .hd{ float:left;width:100%;}
+.phots_user .discription .hd a{color:#98bf1a; text-decoration:none; padding:2px 0; font-weight:bold; font-family: open sans; font-size: 14px; display:block;}
+.phots_user .discription .hd a:hover{text-decoration:underline;}
+.phots_user .discription .hd_txt{ padding:4px 0;float:left;}
+.phots_user .close_cmt{ float:right; margin:0 5px 0 0; width:15px; height: 15px;border: 0px solid red}
+.phots_user .discription .close{ float:right; margin:0 0 0 0; }
+.phots_user .discription .bff_medal{float:left;margin: 3px 0 0 3px;}
+.phots_user .discription .send_btn{color:#98bf1a;font-size:15px;}
+.phots_user .discription .phought_response{width:207px;float:left;}
+.phots_user .discription .thot{float:left; width:207px;}
+.phots_user .discription .thot_top{float:left; width:100%; border:0px solid red; height:7px; background:url('thoughtbox-top.png') no-repeat;}
+.phots_user .discription .thot_mid{float:left; border:0px solid red; background:url('thoughtbox-mid.png') repeat-y;  width:100%;}
+.phots_user .discription .thot_mid .txt { padding:2px 8px 8px 11px; float:left;width: 152px;word-wrap: break-word;}
+.phots_user .discription .thot_mid .count {  float: right;  margin: 0 2px 0 0; width: 35;border:0px solid red;}
+.phots_user .discription .thot_mid .count .no{ float:left; width:15px;}
+.phots_user .discription .thot_mid .count .no a{color:#8BB325; font-weight:bold; font-family: open sans; font-size: 15px; }
+.phots_user .discription .thot_mid .count .hand{ float:right;}
+.phots_user .discription .thot_botom{float:left; width:100%; border:0px solid red; height:14px;background:url('thoughtbox-bottom.png') no-repeat;}
+.phots_user .discription .respond{ float:right; margin:14px 0 0 0; width:50px; border:0px solid red}
+.phots_user .discription .respond a{color:#98bf1a; text-decoration:none; font-weight:bold; font-family: open sans; font-size: 12px;}
+.phots_user .discription .respond a:hover{text-decoration:underline;}
+.phots_user .discription .post_images{ padding:0; border:1px solid red;}
+.phots_user .discription .post_images li { float: left;  list-style: none outside none; margin: 0 10px 0 0;  width: 100px;}
+.phots_user .discription .post_images li img {    border: 1px solid #E4E4E4;  height: 60px;  width: 85px; padding:2px;}
+.ul_comnts { padding:0;  list-style: none;}
+.ul_comnts li { width:100%; float:left;margin-bottom: 5px; list-style: none}
+.ul_comnts li .coments{ background-color: #EAF2D5;    float: left; padding:5px; width:99%;   }
+.ul_comnts li .coments .user_img{float:left; width:40px; margin:4px 10px 0 0; border:0px solid green; }
+.ul_comnts li .coments .user_img img{border-radius:5px; }
+.ul_comnts li .coments .descrip{ float:left; width:200px; border:0px solid red;}
+.ul_comnts li .coments .descrip p{ margin:0; padding:0;}
+.ul_comnts li .coments .descrip p a {color: #98bf1a;font-family: open sans;font-size: 15px; text-decoration: none; font-weight:bold;}
+.ul_comnts li .coments .descrip p a:hover{text-decoration:underline;}
+.ul_comnts li .coments .count {  float: right;  margin: 15px 0 0 0; width: 34px;}
+.ul_comnts li .coments .count .no{ float:left; width:11px;}
+.ul_comnts li .coments .count .no a{color:#98bf1a; font-weight:bold; font-family: open sans; font-size: 15px; }
+
+.ul_comnts li .coments .count .hand{ float:right;}
+
+ #loading {
+background:#000 url('ajax-loader.gif') no-repeat center center;
+height: 340px;
+width: 290px;
+position: fixed;
+background-color:  '#c0c0c0';
+opacity: 0.5;
+z-index: 9999;
+}   
+</style>
+
+<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+ 	
+   var htmlData = [];
+    function showContent(toDo)
+	 {
+	 	var currentDate = new Date();
+	 	
+	 	var appendData = '';
+	 	var currentDate = new Date();
+	 	var obj = {
+	 		'LoggedInUserId': userid,
+		    'phoughtID':phtId,
+		    'RefreshFlag': currentDate.getTime()
+		    }
+		
+	 	var parameters =JSON.stringify(obj);
+	 	
+	 	//alert(parameters);
+	 	var request = $.ajax({
+		     type: "POST",
+		     url: baseUrl + "ViewAllPhoughtCommentsResponses",
+		     data: parameters,
+		     contentType: "application/json; charset=utf-8",
+		     dataType: "json",
+		     cache:false
+	   });
+	   
+       var UsrId = userid;
+	  
+	   request.success(function(data)
+	   {
+	    		$('#loading').fadeOut('normal');
+	 	  	 	var parsed_data = data;
+	   	
+	  			 if(parsed_data.status == 'Success')
+	        	 { 
+	        	 	//alert('hers 2');
+	        	 	if(parsed_data.AllDataList != null  && parsed_data.AllDataList != '')
+	        	 	{
+	        	 			 var phoughtData = parsed_data.AllDataList.subAllDataList[0].TypeHomeStreamPhoughtList[0];
+	        	 			
+				   			 var userName = phoughtData.PhoughtUser;
+							 var userImagePath = phoughtData.ImagePath;
+						 	 var description = '';
+							 var content = '';
+				 		 	 userId = phoughtData.PhoughtUserID;
+							 var Phought = phoughtData.Phought;
+							 Phought = Phought.replace(/<a href=\"/g, '<a style="color:#98bf1a" href="');
+							 if(Phought == -1 || Phought == '-1')
+							 {
+							 	Phought= ''; 
+							 }
+							 
+							 var phoughtId = phtId;
+							// var commentArr = 'TypeHomeStreamPhoughtListObj[0].TypePhoughtCommentsList';
+							 var IPhoughtHighFived = phoughtData.IPhoughtHighFived;
+							 var PhoughtHiveFiveCount = phoughtData.PhoughtHiveFiveCount;
+							 var phoughtDisplay = '';
+							 var commentDisplay = '';
+							 var phougth_hand_img = 'hand.png';
+							 
+							 if(IPhoughtHighFived == 1)
+							 {
+							 	phougth_hand_img = 'hand.png';
+							 }
+							 else
+							 {
+							 	phougth_hand_img = 'hand_gray.png';
+							 }
+							
+							 if(userId == UsrId)
+							 {
+								 userName = 'You';
+								 phoughtDisplay = 'display:block';
+							 }
+							 else
+							 {
+								 userName = userName;
+								 phoughtDisplay = 'display:none';
+							 }
+							
+							 var content = '<div class="phots_user"><div class="user_img"> <a href="#"><img src="'+ userImagePath +'" width="50" height="50" alt="user"></a></div>';
+							 var comment = '<ul class="ul_comnts">';
+								
+	        	 		
+    	 		 		 	 var commentArr = parsed_data.AllDataList.subAllDataList[0].TypeHomeStreamPhoughtList[0].TypePhoughtCommentsList;
+    					 	 
+    					 	 if(commentArr != null && commentArr != '')
+    					 	 {
+    					 	 	 for(var i=0;i<commentArr.length;i++)
+	    					 	 {
+	    					 		  	
+	    					 	  	if(commentArr[i].IHighFived == true)
+	    					 	  	{
+	    					 	  		commentHandImage = 'hand.png';
+	    					 	  	}
+	    					 	  	else
+	    					 	  	{
+	    					 	  		commentHandImage = 'hand_gray.png';
+	    					 	  	}
+	    					 	  	
+	    					 	  	if(commentArr[i].CommentUserID == userid)
+	    					 	  	{
+	    					 	  		commentDisplay = 'display:block';
+	    					 	  	}
+	    					 	  	else
+	    					 	  	{
+	    					 	  		commentDisplay = 'display:none';
+	    					 	  	}
+	    					 	  	
+			        			 	if(commentArr[i].Comment != -1)
+			        			 	{
+	    					 	 	comment += '<li><div class="coments"><span class="user_img"><a href="#"><img src="'+encodeURI(commentArr[i].ProfileImage)+'"  alt="hand"></a></span><div class="descrip"><p><a uid='+ commentArr[i].CommentUserID+' href="#">'+commentArr[i].UserFullName+'</a> '+ commentArr[i].Comment+'</p> </div><span class="close_cmt" style="'+ commentDisplay+'" pid ="'+phoughtId+'" cid ="'+commentArr[i].CommentID+'" ><a href="#"><img src="delet.png" width="25" height="25" alt="close"></a></span><div class="count"> <span class="no"><a href="#">'+commentArr[i].HighFiveCount+'</a></span> <span cmt="'+commentArr[i].CommentID+'" pid="'+phoughtId+'" hiveFiveStatus="'+commentArr[i].IHighFived+'" class="hand pht_cmt_hand"><a href="#"><img src="'+commentHandImage+'" width="20" height="20" alt="hand"></a></span> </div></div></li>';
+	    					 	 	}
+	    					 	 }
+    					 	 }
+    					 	 
+    					 	 comment += '</ul>';
+					
+							 description = '<div class="discription"> <p class="heading"> <a  uid='+userId+' href="#">'+userName+' </a>has a Phought</p> <span class="close" id ="'+phoughtId+'" style="'+ phoughtDisplay +'"><a href="#"><img src="delet.png" width="25" height="25" alt="close"></a></span> <div class="thot"> <div class="thot_top"></div> <div class="thot_mid"> <span class="txt">'+ Phought +'</span> <div class="count"> <span class="no"><a href="#">'+ PhoughtHiveFiveCount +'</a></span> <span id="'+ phoughtId +'" hiveFiveStatus="'+ IPhoughtHighFived +'" class="hand pht_hand"><a href="#"><img src="'+ phougth_hand_img +'" width="20" height="20" alt="hand"></a></span> </div> </div> <div class="thot_botom"></div> </div><div class="phought_response" style="display:none"><div class="phought_text"> <img alt="user image" src="user.png" height="35" width="35"/> <textarea pid="'+ phoughtId +'" class="send_textarea" rows=2" cols=23>Write Your Response</textarea> </div> <p></p></div> </div>'+ comment +' </div>';    	
+				
+				 			 content += description; 
+				
+							 $('.wrap').append(content); 
+    					 	 
+    				}
+	        						
+	        	 }
+	        	 				
+	     });
+	 }
+	 
+	 
+    function addComment(commentText)
+    {
+    	commentText = commentText.replace("SINGLE_QUOATE","'");
+    	var currentDate = new Date();
+    	var obj = {
+	 		'LoggedInUserId': userid,
+		    'phoughtID':phtId,
+		    'CommentText': commentText,
+		    'RefreshFlag': currentDate.getTime()
+		   };
+		
+	 	var parameters =JSON.stringify(obj);
+	 	
+	 	//alert(parameters);
+	 	var request = $.ajax({
+		     type: "POST",
+		     url: baseUrl + "SetCommentOnPhoughts",
+		     data: parameters,
+		     contentType: "application/json; charset=utf-8",
+		     dataType: "json",
+		     cache:false
+	   });
+	   
+       var UsrId = userid;
+	  
+	   request.success(function(data)
+	   {
+	    	
+ 		var parsed_data = data;
+		if(parsed_data.Status == 'Success')
+    		{ 
+    	 		if(parsed_data.TypeSetCommentOnPhoughtsList != null  && parsed_data.TypeSetCommentOnPhoughtsList != '')
+    	 		{
+    	 			
+    	 			//alert('inside');
+    	 		 	var commentArr = parsed_data.TypeSetCommentOnPhoughtsList;
+    	 		 	var comment= '';
+    	 		 	  
+    	 		 	  //alert(commentArr.length);
+    	 		 	for(var i=0;i<commentArr.length;i++)
+				 	 {
+				 	 	if(commentArr[i].IHighFived == true)
+				 	  	{
+				 	  		commentHandImage = 'hand.png';
+				 	  	}
+				 	  	else
+				 	  	{
+				 	  		commentHandImage = 'hand_gray.png';
+				 	  	}
+				 	  	
+				 	  	if(commentArr[i].CommentUserID == userid)
+				 	  	{
+				 	  		commentDisplay = 'display:block';
+				 	  	}
+				 	  	else
+				 	  	{
+				 	  		commentDisplay = 'display:none';
+				 	  	}
+        			 	if(commentArr[i].Comment != -1)
+        			 	{
+        			 		comment += '<li><div class="coments"><span class="user_img"><a href="#"><img src="'+encodeURI(commentArr[i].ProfileImage)+'"  alt="hand"></a></span><div class="descrip"><p><a  uid='+ commentArr[i].CommentUserID+'  href="#">'+commentArr[i].UserFullName+'</a> '+ commentArr[i].Comment+'</p> </div><span class="close_cmt" style="'+ commentDisplay+'" pid ="'+phtId+'" cid ="'+commentArr[i].CommentID+'" ><a href="#"><img src="delet.png" width="25" height="25" alt="close"></a></span><div class="count"> <span class="no"><a href="#">'+commentArr[i].HighFiveCount+'</a></span> <span cmt="'+commentArr[i].CommentID+'" pid="'+phtId+'" hiveFiveStatus="'+commentArr[i].IHighFived+'" class="hand pht_cmt_hand"><a href="#"><img src="'+commentHandImage+'" width="20" height="20" alt="hand"></a></span> </div></div></li>';
+        			 	}
+        		 	 	
+				 	 }
+				 	 
+				 	 //alert(comment);
+				 	 
+				 	 $('.ul_comnts').html(comment);
+    	 		 	
+    	    	}
+    	    	
+    	    	 Ti.App.fireEvent('commentPostedSuccessfully');
+    	    	
+    		}
+    		
+	   }); 	   
+	    				
+    }
+	 
+ 
+	 Ti.App.fireEvent('removePhoughtComment');
+	 
+	 setInterval(function(){
+	 	//showContent('html');
+	 },9000);
+	 
+	 showContent();
+	 
+	   var flag = 1;
+	   $('.phots_user .respond').live('click',function(e){
+	   		Ti.App.fireEvent('phoughtCommentWindow',{pid:$(this).attr('pid')});
+	   		e.preventDefault();
+	   });
+	  
+	   $('.phots_user .close').live('click',function(){
+	    	Ti.App.fireEvent('deleteCommentPhought', {pid:$(this).attr('id')});
+	   });
+	   
+	   $('.phots_user .close_cmt').live('click',function(){
+	    	
+	    	var currentDate = new Date();
+	    
+	    	var obj = {
+		 		'LoggedInUserId': userid,
+			    'phoughtID':phtId,
+			    'CommentID':$(this).attr('cid'),
+			    'RefreshFlag': currentDate.getTime()
+			   };
+			   
+			var refObj = this;   
+			
+				var parameters =JSON.stringify(obj);
+		 	
+		 	//alert(parameters);
+		 	var request = $.ajax({
+			     type: "POST",
+			     url: baseUrl + "DeletePhoughtCommentsbyPhoughtId",
+			     data: parameters,
+			     contentType: "application/json; charset=utf-8",
+			     dataType: "json",
+			     cache:false
+		   });
+		   
+	       var UsrId = userid;
+		  
+		   request.success(function(data)
+		   {
+		   		$(refObj).parent().parent('li').slideUp('slow');
+		    	var parsed_data = data;
+				if(parsed_data.Status == 'Success')
+	    		{
+	    			//alert('found');
+	    			 $(refObj).parent().parent('li').slideUp('slow');
+	    	    }
+	    	    else
+	    	    {
+	    	    	parsed_data.Status;
+	    	    }
+	       });
+	    	
+	    	
+	   });
+	   
+	   $('.phots_user .heading a').live('click',function(){
+	    	//Ti.App.fireEvent('getUserProfile', {user_id:$(this).attr('uid')});
+	   });
+	   
+	   $('.phots_user .pht_hand').live('click',function(){
+	   	
+	   		var currentDate = new Date();
+	 	
+	 		var refObj = this;
+	   	    var status = '' ;
+	   	    //alert($(this).attr('hiveFiveStatus'));
+	   	    
+	   	    if($(this).attr('hiveFiveStatus')==1 || $(this).attr('hiveFiveStatus') == 'true')
+	   	    {
+	   	    	status = 'UnHighFive';
+	   	    	handImage = 'hand_gray.png';
+	   	    }
+	   	    else
+	   	    {
+	   	    	status = 'HighFive';
+	   	    	handImage = 'hand.png';
+	   	    }
+	   	    
+	   	     var obj = {
+	   	     	"LoggedInUserId" : userid,
+	   	     	"phoughtID" : parseInt($(this).attr('id')),
+	   	     	"IsHighFiveOrUnHighFighPhoughtStatus" : status,
+	   	     	'IsRefreshFlag': currentDate.getTime()
+	   	     };
+	   	      
+	   	     var values = JSON.stringify(obj);
+	   	    // values = '{"LoggedInUserId":"aaa4e96e-7fe9-45fd-9179-284e18c78c7a","phoughtID":'+ parseInt($(this).attr('id')) +',"IsHighFiveOrUnHighFighPhoughtStatus":"' + status +'"}';
+	   	     //values = '{"LoggedInUserId":"aaa4e96e-7fe9-45fd-9179-284e18c78c7a","phoughtID":822,"IsHighFiveOrUnHighFighPhoughtStatus":"HighFive"}';
+	   	  //  alert(values)
+	    	 $.ajax({
+			     type: "POST",
+			     url: baseUrl + "SetHighFiveToPhoughts",
+			     data: values,
+			     contentType: " application/json; charset=utf-8",
+			     dataType: "json",
+			     cache:false,
+			     success:function(data)
+			     {
+			     	//alert(handImage +'=='+ status);
+			     	// alert('Hive Five Count=' +  data.HighFiveCount);
+			     	 $(refObj).attr('hiveFiveStatus',data.HighFiveStatus);
+			     	 $(refObj).siblings('.no').children('a').html(data.HighFiveCount);
+			     	 $(refObj).children('a').children('img').attr('src',handImage);
+			     }
+	  		 });
+	  		 
+	  		  return false;
+	   });
+	   
+	   $('.thot_mid .txt a').live('click',function(event){
+	   		Ti.App.fireEvent('openUrl',{url:$(this).attr('href')});
+	   		//alert($(this).attr('href'));
+	   		event.preventDefault();
+	   });
+	   
+	   $('.phots_user .heading a ,.ul_comnts li .coments .descrip p a').live('click',function(){
+	    	Ti.App.fireEvent('getUserProfile', {user_id:$(this).attr('uid')});
+	   });
+	   
+	   $('.phots_user .pht_cmt_hand').live('click',function(){
+	   	     var currentDate = new Date();
+	   	    //alert($(this).attr('pid') + '==' + $(this).attr('cmt') + '==' + $(this).attr('hiveFiveStatus'));
+	   	    var refObj = $(this);
+	   	    var status = '' ;
+	   	    var handImage = '';
+	   	    if($(this).attr('hiveFiveStatus')==1 || $(this).attr('hiveFiveStatus') == 'true')
+	   	    {
+	   	    	status = 'UnHighFive';
+	   	    	handImage = 'hand_gray.png';
+	   	    }
+	   	    else
+	   	    {
+	   	    	status = 'HighFive';
+	   	    	handImage = 'hand.png';
+	   	    }
+	   	      var obj = {
+	   	     	'LoggedInUserId' : userid,
+	   	     	'CommentID' : $(this).attr('cmt'),
+	   	     	'phoughtID' : $(this).attr('pid'),
+	   	     	'IsHighFiveOrUnHighFighStatus' : 'HighFive',
+	   	     	'IsRefreshFlag': currentDate.getTime()
+	   	     }
+	   	    
+	   	     var values = JSON.stringify(obj);
+	   	   
+	    	 $.ajax({
+			     type: "POST",
+			     url: baseUrl + "SetHighFiveToPhoughtComment",
+			     data: values,
+			     contentType: "application/json; charset=utf-8",
+			     dataType: "json",
+			     cache:false,
+			     success:function(data)
+			     {
+			     	//alert('Hive Five Count=' +  data.HighFiveCount);
+			     	$(refObj).attr('hiveFiveStatus',data.HighFiveStatus);
+			     	$(refObj).siblings('.no').children('a').html(data.HighFiveCount);
+			     	$(refObj).children('a').children('img').attr('src',handImage);
+			     }
+	  		 });
+	  		 
+	  		  return false;
+	   });
+	  
+</script>
+
+</head>
+
+<body>
+<div id="loading"></div>
+<div class="wrap"></div>
+</body>
+
+</html>

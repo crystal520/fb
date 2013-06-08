@@ -1,0 +1,22 @@
+Logfile initialized
+[INFO] logfile = /Users/webwerks/Documents/Titanium_Studio_Workspace/fb/build.log
+[DEBUG] /Users/webwerks/Library/Application Support/Titanium/mobilesdk/osx/3.0.2.GA/android/builder.py emulator fb /Users/webwerks/Documents/android_sdk /Users/webwerks/Documents/Titanium_Studio_Workspace/fb com.sid.fb 7 HVGA
+[INFO] Launching Android emulator...one moment
+[DEBUG] From: /Users/webwerks/Documents/android_sdk/tools/emulator
+[INFO] Building fb for Android ... one moment
+[DEBUG] SDCard: /Users/webwerks/.titanium/android2.sdcard
+[DEBUG] AVD ID: 7
+[DEBUG] AVD Skin: HVGA
+[DEBUG] SDK: /Users/webwerks/Documents/android_sdk
+[INFO] Titanium SDK version: 3.0.2 (02/15/13 19:02 5a77fe7)
+[DEBUG] Waiting for device to be ready ...
+[TRACE] adb devices returned 0 devices/emulators
+[DEBUG] /Users/webwerks/Documents/android_sdk/tools/emulator -avd titanium_7_HVGA -port 5560 -sdcard /Users/webwerks/.titanium/titanium_7_HVGA.sdcard -logcat *:d,*,TiAPI:V -no-boot-anim -partition-size 128
+[TRACE] adb devices returned 1 devices/emulators
+[INFO] Android Emulator has exited
+[TRACE] adb devices returned 0 devices/emulators
+[TRACE] adb devices returned 0 devices/emulators
+[TRACE] adb devices returned 0 devices/emulators
+[TRACE] adb devices returned 0 devices/emulators
+[TRACE] adb devices returned 0 devices/emulators
+[ERROR] Timed out waiting for emulator to be ready, you may need to close the emulator and try again

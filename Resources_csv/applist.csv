@@ -1,0 +1,15 @@
+"1","peoplevpn smartphone client","1","peoplevpn_sc",NULL,NULL,"50","19",,,"Y","UA-40100072-1"
+"2","cloodevent smartphone client","1","cloodevent_sc",NULL,NULL,NULL,NULL,,,NULL,
+"3","peoplevpn web client","1","peoplevpn_wc",NULL,,NULL,NULL,,,NULL,
+"4","cloodwish smartphone client","1","cloodwish_sc",NULL,,NULL,NULL,,,NULL,
+"5","cloodvote smartphone client","1","cloodvote_sc",NULL,,NULL,NULL,,,NULL,
+"6","cloodevent facebook client","1","cloodevent_fc",NULL,,NULL,NULL,,,NULL,
+"7","cloodevent web client","1","cloodevent_wc",NULL,,NULL,NULL,,,NULL,
+"8","cloodwish facebook client","1","cloodwish_fc",NULL,,NULL,NULL,,,NULL,
+"9","cloodwish web client","1","cloodwish_wc",NULL,,NULL,NULL,,,NULL,
+"10","cloodvote facebook client","1","cloodvote_fc",NULL,,NULL,NULL,,,NULL,
+"11","cloodvote web client","1","cloodvote_wc",NULL,,NULL,NULL,,,NULL,
+"14","cloodevent smartphone client","2","cloodevent_sc",NULL,,NULL,NULL,,,NULL,
+"16","cloodvote web client","2","cloodvote_wc",NULL,,NULL,NULL,,,NULL,
+"17","cloodvpn smartphone client","1","cloodvpn_sc",NULL,NULL,"50","19",,,"Y","UA-40099182-1"
+"18","cloodvpn web client","1","cloodvpn_amswc",NULL,,NULL,NULL,,,NULL,"UA-40104848-1"

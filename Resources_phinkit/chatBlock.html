@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+
+body {
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	/*background-color:#28282A;*/
+}
+
+h1 {
+	margin:1em;
+	padding:0;
+}
+
+p{ color:#fff;}
+
+.roundbox-tr {
+	margin:15px auto;
+	padding:0;
+	background:url("roundbox_tr.gif") no-repeat right top;
+	width: 90%;
+}
+
+/* top-left corner and left side */
+.roundbox-tl {
+	margin:0;
+	padding:0;
+	background:   url("roundbox_tl.gif") no-repeat left top;
+}
+
+/* bottom-right corner and bottom side */
+.roundbox-br {
+	margin:0;
+	padding:0;
+	background:   url("roundbox_br.gif") no-repeat right bottom;
+}
+
+/* bottom-left corner */
+.roundbox-bl {
+	margin:0;
+	padding:0;
+	background:   url("roundbox_bl.gif") no-repeat left bottom;
+}
+
+/* content div, it could be omitted (the content going into "roundbox-bl" but I felt that alinging the content was easier 
+with "roundbox-content" in place */
+.roundbox-content {
+	margin:0;
+	padding:20px;
+	font-size: 12px;
+}
+
+.roundbox-content p {
+	margin:0;
+	padding:0;
+	line-height:1.6;
+}
+
+/* roundbox CSS ends here  */
+
+/* top-right corner, the largest image which covers most of the surface and
+accounts for most of the scalability  */
+.irregbox-tr {
+	width:80%;
+	float:right;
+	clear:left;
+	margin:0;
+	padding:0;
+	background:url("irregular_border_tr.jpg") no-repeat right top;
+}
+
+/* top-left corner and left side */
+.irregbox-tl {
+	margin:0;
+	padding:0;
+	background:   url("irregular_border_tl.jpg") no-repeat left top;
+}
+
+/* bottom-right corner and bottom side */
+.irregbox-br {
+	margin:0;
+	padding:0;
+	background:   url("irregular_border_br.jpg") no-repeat right bottom;
+}
+
+/* bottom-left corner */
+.irregbox-bl {
+	margin:0;
+	padding:0;
+	background:   url("irregular_border_bl.jpg") no-repeat left bottom;
+}
+
+/* content div, it could be omitted (the content going into "roundbox-bl" but I felt that alinging the content was easier 
+with "roundbox-content" in place */
+.irregbox-content {
+	margin:0;
+	padding:2.5em 5em;
+}
+
+.irregbox-content p {
+	margin:0;
+	padding:0 0 0.5em 0;
+	line-height:1.6;
+}
+/* new box ============================== */
+.dropshadow-tr {
+	width:70%;
+	float:left;
+	margin:1em 0 0 1em;
+	padding:0;
+	background:url("dropshadow_tr.gif") no-repeat right top;
+}
+
+.dropshadow-tl {
+	margin:0;
+	padding:0;
+	background:url("dropshadow_tl.gif") no-repeat left top;
+}
+
+.dropshadow-br {
+	margin:0;
+	padding:0;
+	background:url("dropshadow_br.gif") no-repeat right bottom;
+}
+
+.dropshadow-bl {
+	margin:0;
+	padding:0;
+	background:url("dropshadow_bl.gif") no-repeat left bottom;
+}
+
+
+.dropshadow-content {
+	margin:0;
+	padding:1.5em 3em 3em 2.5em;
+}
+
+.dropshadow-content p, .dropshadow-content h1 {
+	margin:0; /*0 0.5em 0;*/
+	padding:0;
+	line-height:1.6;
+}
+
+/* ============================= */
+.codebox {
+	font-family:"Courier New", Courier, mono;
+	margin:0;
+	padding:0;
+}
+
+.code {
+	font-family:"Courier New", Courier, mono;
+	
+}
+.note {	
+	margin:0 auto;
+	padding:0;
+}
+
+.home {
+	clear:both;
+	font-weight:bold;
+	padding:2em;
+	margin:0;
+}
+
+
+
+
+.wrap1 {
+    border: 0 solid red;
+    height: 340px;
+    margin: 0 auto;
+    width: 260px;
+}
+
+
+</style>
+<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+<script  type="text/javascript">
+
+ $(document).ready(function(){
+ 	//alert("heeh"+chattext1);
+	 alert(chattext1);
+	 $('.roundbox-content').html(chattext1);
+});
+ 	
+</script>
+</head>
+
+
+<body> 
+
+
+<div class="wrap">
+<!--new div -->
+<div class="roundbox-tr1" style='margin:15px auto;padding:0;background:url("roundbox_tr.gif") no-repeat right top;width: 90%;'> 
+  <div class="roundbox-tl1" style='margin:0;padding:0;background:   url("roundbox_tl.gif") no-repeat left top;'> 
+    <div class="roundbox-br1" style='margin:0;padding:0;background:   url("roundbox_br.gif") no-repeat right bottom;'> 
+      <div class="roundbox-bl1" style='margin:0;padding:0;background:   url("roundbox_bl.gif") no-repeat left bottom;'> 
+        <div class="roundbox-content1" style='margin:0;padding:20px;font-size: 12px;'> 
+         <p style='margin:0;padding:0 0 0.5em 0;line-height:1.6;'></p>
+        </div>
+      </div> 
+    </div> 
+  </div> 
+</div>
+</div>
+</body>
+</html>

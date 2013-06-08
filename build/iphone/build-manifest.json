@@ -1,0 +1,23 @@
+{
+	"target": "simulator",
+	"deployType": "development",
+	"deviceFamily": "iphone",
+	"iosSdkPath": "/Users/webwerks/Library/Application Support/Titanium/mobilesdk/osx/3.0.2.GA/iphone",
+	"appGuid": "973a5e0c-ad07-4cb1-800a-76c6905fd00b",
+	"tiCoreHash": "fa476584d63923183b326150e75416b3",
+	"modulesHash": "182e45d95e2abe42df550d916b977763",
+	"nativeModulesHash": "731725fb26e8b1dc367f9db32ce0f009",
+	"gitHash": "5a77fe7",
+	"name": "fb",
+	"id": "com.sid.fb",
+	"analytics": true,
+	"publisher": "webwerks",
+	"url": "http://",
+	"version": "1.0",
+	"description": "not specified",
+	"copyright": "2012 by webwerks",
+	"guid": "973a5e0c-ad07-4cb1-800a-76c6905fd00b",
+	"skipJSMinification": true,
+	"forceCopy": false,
+	"forceCopyAll": false
+}
