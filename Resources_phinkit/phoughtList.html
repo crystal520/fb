@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<!-- saved from url=(0073)http://training.web-werks.com/design/amit/phinkit/iphone/phoughtList.html -->
+<html><head><meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0" />
+  	<style>
+ /* 		
+body { font: 0.em Arial, sans-serif; }
+                .praiseContainer{float:left;position: relative; width: 40px; margin: 25px 10px 0 0;}
+                .praiseContainer img{vertical-align: bottom;}
+                .supPraise{position: absolute;top:-15px; right:0; padding: 2px; color: #fff; min-width: 12px; text-align: center; border: solid 2px #fff;}
+                .cmntArea{background:url('textareabg.png') no-repeat; width: 200px; color:#fff;  padding: 5px; border: 1px solid #464648; border-radius: 5px;}
+                .adcomentBtn{clear:both;float:right;width: 113px; height: 24px; background: url('adcoment.png') no-repeat; margin: 10px 7px 0 0;}
+                
+.memex_user{color:#98bf1a;text-decoration:none;font-size: 10px;margin: 0 0 0 0;}  
+          #loading {
+background:#000 url('ajax-loader.gif') no-repeat center center;
+height: 340px;
+width: 280px;
+position: fixed;
+background-color:  '#c0c0c0';
+opacity: 0.5;
+z-index: 9999;
+} 
+
+.wrap{height: 100%;
+width: 260px; margin:0 auto; height: 340px; border:0px solid red; }
+
+
+.phots_user{ width:100%; padding:10px; border-bottom:1px solid #ccc; float:left;}
+.phots_user .user_img{ float:left; width:42px; margin:0 10px 0 0;}
+.phots_user .user_img {}
+.phots_user .discription{ float:right; width:200px; border:0px solid red;}
+.phots_user .discription .heading {   border: 0 solid red;  color: #666666; float: left; font-family: open sans;  font-size: 11px; font-weight: bold;    width: 184px;}
+.phots_user .discription .heading a{color:#8BB325; text-decoration:none; font-family: open sans;   font-size: 12px; }
+.phots_user .discription .heading a:hover{text-decoration:underline;}
+.phots_user .discription .hd{ float:left;width:100%;}
+.phots_user .discription .hd a{color:#8BB325; text-decoration:none; padding:5px 0; font-weight:bold; font-family: open sans; font-size: 11px; display:block;}
+.phots_user .discription .hd a:hover{text-decoration:underline;}
+.phots_user .discription .hd_txt{ padding:5px 0; color:#fff;}
+
+.phots_user .discription .close{ float:right; margin:14px 0 0  0;}
+
+.phots_user .discription .thot{float:left; width:207px; }
+.phots_user .discription .thot_top{float:left; width:100%; border:0px solid red; height:7px; }
+.phots_user .discription .thot_mid{float:left; border:0px solid red; width:100%;}
+.phots_user .discription .thot_mid .txt { padding:2px 8px 8px 11px; float:left;}
+.phots_user .discription .thot_mid .count {  float: right;  margin: 0 10px 0 0; width: 24px;}
+.phots_user .discription .thot_mid .count .no{ float:left; width:11px;}
+.phots_user .discription .thot_mid .count .no a{color:#8BB325; font-weight:bold; font-family: open sans; font-size: 11px; }
+.phots_user .discription .thot_mid .count .hand{ float:left;}
+.phots_user .discription .thot_botom{float:left; width:100%; border:0px solid red; height:14px;background:url('thoughtbox-bottom.png') no-repeat;}
+.phots_user .discription .respond{ float:right; margin:14px 0 0  0; width:50px;}
+.phots_user .discription .respond a{color:#8BB325; text-decoration:none; font-weight:bold; font-family: open sans; font-size: 11px;}
+.phots_user .discription .respond a:hover{text-decoration:underline;}
+.phots_user .discription .post_images{ padding:0;}
+.phots_user .discription .post_images li { float: left;  list-style: none outside none; margin: 0 10px 0 0;  width: 90px;}
+.phots_user .discription .post_images li img {    border: 1px solid #E4E4E4;  height: 60px;  width: 85px; padding:2px;}
+.ul_comnts { padding:0;  list-style: none;}
+.ul_comnts li { width:100%; float:left;margin-bottom: 5px; list-style: none}
+.ul_comnts li .coments{ background-color: #EAF2D5;    float: left; padding:5px; width:99%;   }
+.ul_comnts li .coments .user_img{float:left; width:30px; margin:4px 10px 0 0;}
+.ul_comnts li .coments .user_img img{ width:25px; height:25px;}
+.ul_comnts li .coments .descrip{ float:left; width:100px;}
+.ul_comnts li .coments .descrip p{ margin:0; padding:0;}
+.ul_comnts li .coments .descrip p a {color: #8BB325;font-family: open sans;font-size: 11px; text-decoration: none; font-weight:bold;}
+.ul_comnts li .coments .descrip p a:hover{text-decoration:underline;}
+.ul_comnts li .coments .count {  float: right;  margin: 5px 5px 0 0; width: 24px;}
+.ul_comnts li .coments .count .no{ float:left; width:11px;}
+.ul_comnts li .coments .count .no a{color:#8BB325; font-weight:bold; font-family: open sans; font-size: 11px; }
+
+.ul_comnts li .coments .count .hand{ float:left;}
+*/
+body { font: 14px Arial, sans-serif; width:300;margin:0;padding:0;color:'red';}
+                .praiseContainer{float:left;position: relative; width: 40px; margin: 25px 10px 0 0;}
+                .praiseContainer img{vertical-align: bottom;}
+                .supPraise{position: absolute;top:-15px; right:0; padding: 2px; color: #fff; min-width: 12px; text-align: center; border: solid 2px #fff;}
+                .cmntArea{background:url('textareabg.png') no-repeat; width: 200px; color:#fff;  padding: 5px; border: 1px solid #464648; border-radius: 5px;}
+                .adcomentBtn{clear:both;float:right;width: 113px; height: 24px; background: url('adcoment.png') no-repeat; margin: 10px 7px 0 0;}
+                
+.memex_user{color:#98bf1a;text-decoration:none;font-size: 10px;margin: 0 0 0 0;}  
+          #loading {
+background:#000 url('ajax-loader.gif') no-repeat center center;
+height: 340px;
+width: 290px;
+position: fixed;
+background-color:  '#c0c0c0';
+opacity: 0.5;
+z-index: 9999;
+margin: 0 0 0 16px;
+} 
+
+.small_loader
+{
+background:#000 url('loading-small.gif') no-repeat;
+height: 32px;
+width: 32px;
+background:'transperent';
+opacity: 0.5;
+z-index: 9999;
+text-align:center;
+margin : 2px 0 0 130px;
+}
+
+.wrap{height: 100%;
+width: 275px; margin:0 auto; height: 500px; border:0px solid red; }
+
+
+.phots_user{ width:100%; padding:10px 0; border-bottom:1px solid #ccc; float:left; background-color:'#808080'; }
+.phots_loader{width:100%; padding:10px 0; float:left;}
+.phots_user .user_img{ float:left;  margin:0 0 0 0;}
+.phots_user .user_img img {border:1px solid #fff; border-radius:5px; width:40px; height:40px;}
+.phots_user .discription{ float:right; width:100%; border:0px solid red;margin-top:2px}
+.phots_user .discription .phought_image img{border:2px solid #fff;border-radius:5px;}
+.phots_user .heading {margin: 0 0 0 10px;border: 0px solid red;  color: #fff; float: left; font-family: open sans;  font-size: 15px;  width: 196px;}
+.phots_user .heading a{color:#98bf1a; text-decoration:none; font-family: open sans;   font-size: 16px; }
+.phots_user .heading a:hover{text-decoration:underline;}
+.phots_user .discription .hd{ float:left;width:100%;border:0px solid blue;}
+.phots_user .discription .hd a{color:#98bf1a; text-decoration:none; padding:2px 0; font-weight:bold; font-family: open sans; font-size: 16px; display:block;}
+.phots_user .discription .hd a:hover{text-decoration:underline;}
+.phots_user .discription .hd_txt{ padding:4px 0;float:left; border:0px solid red; width:100%; border:0px solid red;}
+.phots_user .discription .close_cmt{ float:right; margin:0 4px 4px 0; width:15px; height: 15px;}
+.phots_user .close{ float:right; margin:0 0 0 0; }
+.phots_user .discription .bff_medal{float:left;margin: 3px 0 0 3px;}
+.phots_user .discription .send_btn{color:#98bf1a;font-size:15px;}
+.phots_user .discription .phought_response{width:207px;float:left;border:0px solid blue}
+.phots_user .discription .thot{float:left; width:100%; border: 0px solid red}
+.phots_user .discription .thot_top{float:left; width:100%; border:0px solid red; height:5px; background:url('thoughtbox-top.png') no-repeat;}
+.phots_user .discription .thot_mid{float:left; border:0px solid red; background:url('thoughtbox-mid.png') repeat-y;  width:100%;}
+.phots_user .discription .thot_mid .txt { border:0px solid red;padding:2px 8px 8px 11px; float:left;width: 220px;word-wrap: break-word;}
+.phots_user .discription .thot_mid .count {  float: right;  margin: 0 2px 0 0; width: 35;border:0px solid red;}
+.phots_user .discription .thot_mid .count .no{ float:left; width:11px;}
+.phots_user .discription .thot_mid .count .no a{color:#8BB325; font-weight:bold; font-family: open sans; font-size: 15px;}
+.phots_user .discription .thot_mid .count .hand{ float:right;}
+.phots_user .discription .thot_botom{float:left; width:100%; border:0px solid red; height:14px;background:url('thoughtbox-bottom.png') no-repeat;}
+.phots_user .discription .respond{ float:right; margin:14px 0 0 0; width:67px; border:0px solid red}
+.phots_user .discription .respond a{color:#98bf1a; text-decoration:none; font-weight:bold; font-family: open sans; font-size: 18px;}
+.phots_user .discription .respond a:hover{text-decoration:underline;}
+.phots_user .discription .post_images{ padding:0; border:0px solid red; }
+.phots_user .discription .post_images li { float: left;  list-style: none outside none; margin: 0 10px 0 0;  width: 125px; }
+.phots_user .discription .post_images li img {    border: 1px solid #E4E4E4;  height: 85px;  width: 125px; padding:2px;}
+.ul_comnts { padding:0;  list-style: none;}
+.ul_comnts li { width:265px; float:left;margin-bottom: 5px; list-style: none}
+.ul_comnts li .coments{ background-color: #EAF2D5;    float: left; padding:5px; width:100%;margin-top:2px;   }
+.ul_comnts li .coments .user_img{float:left; width:30px; margin:4px 10px 0 0;}
+.ul_comnts li .coments .user_img img{ width:25px; height:25px;}
+.ul_comnts li .coments .descrip{ float:left; width:180px; border:0px solid red;}
+.ul_comnts li .coments .descrip p{ margin:0; padding:0; word-wrap: break-word;}
+.ul_comnts li .coments .descrip p a {color: #98bf1a;font-family: open sans;font-size: 15px; text-decoration: none; font-weight:bold;}
+.ul_comnts li .coments .descrip p a:hover{text-decoration:underline;}
+.ul_comnts li .coments .count {  float: right;  margin: 5px 0 0 0; width: 34px;}
+.ul_comnts li .coments .count .no{ float:left; width:11px;}
+.ul_comnts li .coments .count .no a{color:#98bf1a; font-weight:bold; font-family: open sans; font-size: 15px; }
+
+.ul_comnts li .coments .count .hand{ float:right;}
+
+ #loading {
+background:#000 url('ajax-loader.gif') no-repeat center center;
+height: 340px;
+width: 290px;
+position: fixed;
+background-color:  '#c0c0c0';
+opacity: 0.5;
+z-index: 9999;
+}   
+
+ #loading_bottom {
+background:#000 url('ajax-loader.gif') no-repeat center center;
+height: 50px;
+width: 290px;
+position: absolute;
+bottom:0;
+left:0;
+background:  '#c0c0c0';
+opacity: 0.5;
+z-index: 9999;
+direction: none;
+}   
+
+/*
+.more {
+height: 50px;
+width: 50px;
+background:#000 url('loading.gif') no-repeat center center;
+position: relative;
+background-color:  '#c0c0c0';
+}
+*/
+
+</style>
+
+<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+ 	
+   var NumberOfRowsCount = 9;	
+   var htmlData = [];
+    function showContent(toDo)
+	 {
+	 	var appendData = '';
+	 	var currentDate = new Date();
+	 	
+	 	if(toDo == 'html')
+	 	{
+	 		var obj = {
+	 		'IsRefreshFlag': currentDate.getTime(),
+	 		'NumberOfRows': NumberOfRowsCount,
+		    'RowNumber':0,
+		    'UserId':userid}
+	 	}
+	 	else
+	 	{
+	 		var obj = {
+	 		'IsRefreshFlag': currentDate.getTime(),
+	 		'NumberOfRows': NumberOfRows,
+		    'RowNumber':RowNumber,
+		    'UserId':userid}
+	 	}
+	 	
+	 	var parameters =JSON.stringify(obj);
+	 	//alert(parameters);
+	 	var request = $.ajax({
+		     type: "POST",
+		     url: baseUrl + "GetHomeStreamAllDataList2",
+		     data: parameters,
+		     contentType: "application/json; charset=utf-8",
+		     dataType: "json",
+		     beforeSend:function(e){
+		     	if($('.wrap .phots_loader').html() == null && RowNumber != 9)
+		     	{
+		     		$('.wrap').append('<div class="phots_loader"><div class="small_loader"></div></div>');
+		     	}
+		     },
+		     cache:false
+	   });
+	   
+       var UsrId = userid;
+	  
+	   request.success(function(data)
+	   {
+	   $('.wrap .phots_loader').remove();
+	   	$('#loading,#loading_bottom').fadeOut('normal');
+	   	 var parsed_data = data;
+	   	 
+	  			 //$('.wrap').html('');
+	        	 if(parsed_data.status == 'Success')
+	        	 { 
+	        		 var  AllDataListObj = parsed_data.AllDataList;
+	        		 if(AllDataListObj != null)
+	        		 {
+	        			 var subAllDataListObj = AllDataListObj.subAllDataList;
+	        			 if(subAllDataListObj != null)
+	        			 {
+	        			 	
+	        			 	if(subAllDataListObj.length <= 0)
+	        			 	{
+	        			 		alert('No Data Found');
+	        			 	}
+	        			 		// //**showing data of home screen
+	        				for(var i = 0; i < subAllDataListObj.length; i++)
+	        				 {
+	        					 var userName = '';
+	        					 var userImagePath = '';
+	        					 var description = '';
+	        					 var content = '';
+// 	        					
+	        					 var listObj = subAllDataListObj[i];
+	        					 var TypeHomeStreamConnectionListObj = listObj.TypeHomeStreamConnectionList;
+	        					 var TypeHomeStreamPhoughtListObj = listObj.TypeHomeStreamPhoughtList;
+	        					 var TypeHomeStreamProfileEditListObj = listObj.TypeHomeStreamProfileEditList;
+	        					 var TypeMemexListObj = listObj.TypeMemexList;  
+	        					 var TypeMedalBffAlertListObj = listObj.TypeMedalBffAlertList;
+	        					 var TypeMemexPhoughtRePhinkListObj = listObj.TypeMemexPhoughtRePhinkList;
+	        					
+	        					 if(TypeHomeStreamProfileEditListObj != null && TypeHomeStreamProfileEditListObj != '')
+	        					 { 
+	        					 	 var profileEditedUserId = TypeHomeStreamProfileEditListObj[0].UserId;
+	        						 userName = TypeHomeStreamProfileEditListObj[0].User;
+	        						 userImagePath = encodeURI(TypeHomeStreamProfileEditListObj[0].ImagePath);
+	        						 var updated_fields = TypeHomeStreamProfileEditListObj[0].UpdatedFields;
+	        						 var title = '';
+// 	        							
+	        						 if(profileEditedUserId == UsrId)
+	        						 {
+	        							 userName = 'You';
+	        							 updated_fields = ' have updated ' + updated_fields;
+	        						 }
+	        						 else
+	        						 {
+	        							 userName = userName;
+	        							 updated_fields = ' has updated ' + updated_fields;
+	        						 }
+// 	        						
+	        					     var content = '<div class="phots_user"><div class="user_img"> <a href="#"><img  src="'+ userImagePath +'" alt="user"></a></div>';
+	        						 description = '<p class="heading"><a  uid='+profileEditedUserId+' href="#">'+ userName + '</a>'+ updated_fields +' </p></div>'; 
+// 	        						
+	        					 }
+ 	        					
+	        					 if(TypeHomeStreamConnectionListObj != null && TypeHomeStreamConnectionListObj != '')
+	        					 {
+	        					 	 userName = TypeHomeStreamConnectionListObj[0].User;
+	        						 userImagePath = encodeURI(TypeHomeStreamConnectionListObj[0].UserImagePath);
+	        						 var connectedWith = TypeHomeStreamConnectionListObj[0].ConnectedUser;
+									 var contryWise = TypeHomeStreamConnectionListObj[0].CountryWise; 	
+									 var headingText = '';	
+
+	        						 if(TypeHomeStreamConnectionListObj[0].RelatedUserId == UsrId)
+	        						 {
+	        							 userName = 'You';
+	        						 }
+	        						 else
+	        						 {
+	        							 userName = userName;
+	        						 }
+	        						 
+	        						 if(contryWise != '' && contryWise != null && contryWise.ToUpper() == 'COUNTRYWISE')
+	        						 {
+	        						 	if(userName == 'You')
+	        						 	{
+	        						 		headingText = '<a uid='+TypeHomeStreamConnectionListObj[0].RelatedUserId+' href="#">' + userName + '</a> have joined Phinkit in your country';
+	        						 	}
+	        						 	else
+	        						 	{
+	        						 		headingText = '<a uid='+TypeHomeStreamConnectionListObj[0].RelatedUserId+' href="#">' + userName + '</a> has joined Phinkit in your country';
+	        						 	}
+	        						 }
+	        						 else
+	        						 {
+	        						  	headingText = '<a uid='+TypeHomeStreamConnectionListObj[0].RelatedUserId+' href="#">'+ userName + '</a> Connected With <a uid='+TypeHomeStreamConnectionListObj[0].ConnectedUserId+' href="#">'+ connectedWith + '</a>';	
+	        						 }
+									
+	        						 var content = '<div class="phots_user"><div class="user_img"> <a href="#"><img src="'+ userImagePath +'" alt="user"></a></div>';
+	        						 description = '<p class="heading">'+ headingText +'</p></div>'; 
+	        					 }
+ 	        					
+	        					 if(TypeHomeStreamPhoughtListObj != null && TypeHomeStreamPhoughtListObj != '')
+	        					 {
+	        						 userId = TypeHomeStreamPhoughtListObj[0].PhoughtUserID;
+	        						 userName = TypeHomeStreamPhoughtListObj[0].PhoughtUser;
+	        						 userImagePath = encodeURI(TypeHomeStreamPhoughtListObj[0].ImagePath);
+	        						 var Phought = TypeHomeStreamPhoughtListObj[0].Phought;
+	        						 var PhoughtImaagePath = TypeHomeStreamPhoughtListObj[0].PhoughtImagePath;
+	        						 var phoughtId = TypeHomeStreamPhoughtListObj[0].PhoughtId;
+	        						 var commentArr = TypeHomeStreamPhoughtListObj[0].TypePhoughtCommentsList;
+	        						 var IPhoughtHighFived = TypeHomeStreamPhoughtListObj[0].IPhoughtHighFived;
+	        						 var PhoughtHiveFiveCount = TypeHomeStreamPhoughtListObj[0].PhoughtHiveFiveCount;
+	        						 var phoughtDisplay = '';
+	        						 var commentDisplay = '';
+	        						 var phougth_hand_img = '';
+	        						 var hasOrhad = ''; 
+	        						 Phought = Phought.replace(/<a href=\"/g, '<a style="color:#98bf1a" href="');
+	        						 PhoughtImage = '';
+	        						 if(PhoughtImaagePath != -1)
+	        						 {
+	        						  	PhoughtImage = '<div class="phought_image"><img src="'+PhoughtImaagePath+'" alt="Phought Image"/></div>';	
+	        						 }
+	        						 
+	        						 
+	        						 if(IPhoughtHighFived == 1)
+	        						 {
+	        						 	phougth_hand_img = 'hand.png';
+	        						 }
+	        						 else
+	        						 {
+	        						 	phougth_hand_img = 'hand_gray.png';
+	        						 }
+	        						
+	        						 if(userId == UsrId)
+	        						 {
+	        							 userName = 'You';
+	        							 hasOrhad = ' had';
+	        							 phoughtDisplay = 'display:block';
+	        						 }
+	        						 else
+	        						 {
+	        							 userName = userName;
+	        							 hasOrhad = ' has';
+	        							 phoughtDisplay = 'display:none';
+	        						 }
+ 	        						
+	        						 var content = '<div class="phots_user"><div class="user_img"> <a href="#"><img src="'+ userImagePath +'" alt="user"></a></div>';
+	        						 var comment = '<ul class="ul_comnts">';
+	        						 
+	        						 if(commentArr != '' && commentArr != null)
+	        						 {
+	        						 	 for(var comment_cnt = 0;comment_cnt<commentArr.length;comment_cnt++)
+		        						 {
+		        						 	if(commentArr[comment_cnt].Comment != -1)
+		        						 	{
+		        						 		var commentHandImage = ''
+		        						 		if(commentArr[comment_cnt].IHighFived != 0)
+		        						 		{
+				        						 	commentHandImage = 'hand.png';
+				        						}
+				        						else
+				        						{
+				        						 	commentHandImage = 'hand_gray.png';
+				        						}
+			        						 	if(commentArr[comment_cnt].CommentUserID == UsrId)
+			        						 	{
+			        						 		commentDisplay = 'display:block';
+			        						 	}
+			        						 	else
+			        						 	{
+			        						 		commentDisplay = 'display:none';
+			        						 	}
+			        						 	comment += '<li><div class="coments"><span class="user_img"><a href="#"><img src="'+encodeURI(commentArr[comment_cnt].ProfileImage)+'" width="13" height="15" alt="hand"></a></span><div class="descrip"><p><a uid='+ commentArr[comment_cnt].CommentUserID+' href="#">'+commentArr[comment_cnt].UserFullName+'</a> '+ commentArr[comment_cnt].Comment+'</p> </div><span class="close_cmt" style="'+ commentDisplay+'" pid ="'+phoughtId+'" cid ="'+commentArr[comment_cnt].CommentID+'" ><a href="#"><img src="delet.png" width="25" height="25" alt="close"></a></span><div class="count"> <span class="no"><a href="#">'+commentArr[comment_cnt].HighFiveCount+'</a></span> <span cmt="'+commentArr[comment_cnt].CommentID+'" pid="'+phoughtId+'" hiveFiveStatus="'+commentArr[comment_cnt].IHighFived+'" class="hand pht_cmt_hand"><a href="#"><img src="'+commentHandImage+'" width="20" height="20" alt="hand"></a></span> </div></div></li>';
+			        					    }
+		        						 }
+	        						 }
+	        						 
+	        						 comment += '</ul>';
+	        						
+	        						 description = '<p class="heading"> <a  uid='+userId+' href="#">'+userName+' </a> '+ hasOrhad+' a Phought</p><span class="close" id ="'+phoughtId+'" style="'+ phoughtDisplay +'"><a href="#"><img src="delet.png" width="25" height="25" alt="close"></a></span><div class="discription">'+ PhoughtImage +'<div class="thot"> <div class="thot_top"></div> <div class="thot_mid"> <span class="txt" style="color:white">'+ Phought +'</span> <div class="count"> <span class="no"><a href="#">'+ PhoughtHiveFiveCount +'</a></span> <span id="'+ phoughtId +'" hiveFiveStatus="'+ IPhoughtHighFived +'" class="hand pht_hand"><a href="#"><img src="'+ phougth_hand_img +'" width="20" height="20" alt="hand"></a></span> </div> </div> <div class="thot_botom"></div> </div>'+ comment +'<span class="respond" pid="'+ phoughtId +'"><a href="#">Respond</a></span><div class="phought_response" style="display:none"><div class="phought_text"> <img alt="user image" src="user.png" height="35" width="35"/> <textarea pid="'+ phoughtId +'" class="send_textarea" rows=2" cols=23>Write Your Response</textarea> </div> <p><span class="send_btn" >send</span></p></div> </div> </div>';    	
+   	        					 }    						
+   	        					 if(TypeMemexListObj != null && TypeMemexListObj != '')
+   	        					 {
+   	        					 	 userId = TypeMemexListObj[0].UserIdMemexOwner;
+	        						 userName = TypeMemexListObj[0].UserName;
+	        						 userImagePath = encodeURI(TypeMemexListObj[0].UserImagePath);
+	        						 var heading = TypeMemexListObj[0].Description;
+	        						 var memexTitle = TypeMemexListObj[0].MemexTitle;
+	        						 var memexId = TypeMemexListObj[0].MemexId;
+	        						
+	        						 var memexBody = TypeMemexListObj[0].MemexArticleQuote;
+	        						 var images = '';
+	        						 var imagesArr = TypeMemexListObj[0].TypeMemexImagesList;
+	        						 
+	        						 for(var c=0;c<imagesArr.length;c++)
+	        						 {
+	        						 	images += '<li><img alt="user" src="'+ imagesArr[c].MemexImageURL + '"></li>';
+	        						 }
+									
+   	        						 content = '<div class="phots_user"><div class="user_img"> <a href="#"><img  alt="user" src="'+userImagePath+'"></a></div> <p class="heading"> <a uid='+userId+' href="#">'+ userName +'</a> '+ heading +' </p> <div class="discription"> <div class="hd"><a  memexId='+memexId+' memexOwnerId='+userId +' href="#">'+ memexTitle +'</a></div> <span class="hd_txt" style="color:#fff;">'+ memexBody +'</span> <ul class="post_images">'+ images + ' </ul> </div> </div>';
+   	        					 }
+   	        					 
+   	        					 if(TypeMemexPhoughtRePhinkListObj != null && TypeMemexPhoughtRePhinkListObj != '')
+   	        					 {
+   	        					 	 userId = TypeMemexPhoughtRePhinkListObj[0].PhoughtUserID1;
+	        						 userName = TypeMemexPhoughtRePhinkListObj[0].UserName1;
+	        						 userImagePath = encodeURI(TypeMemexPhoughtRePhinkListObj[0].UserImagePath1);
+	        						 var heading = 'has posted Re-Phink of ';
+	        						 var memexTitle = TypeMemexPhoughtRePhinkListObj[0].MemexTitle1;
+	        						 var memexId = TypeMemexPhoughtRePhinkListObj[0].MemexId1;
+	        						 var memexBody = TypeMemexPhoughtRePhinkListObj[0].MemexArticleQuote1;
+	        						 var images = '';
+	        						 var imagesArr = TypeMemexPhoughtRePhinkListObj[0].TypeMemexImagesList;
+	        						 var commentArr = TypeMemexPhoughtRePhinkListObj[0].TypePhoughtCommentsList;
+	        						 var Phought = TypeMemexPhoughtRePhinkListObj[0].Phought1;
+	        						 Phought = Phought.replace(/<a href=\"/g, '<a style="color:#98bf1a" href="');
+	        						 if(Phought == -1)
+	        						 {
+	        						 	Phought = '';
+	        						 }
+	        						 var PhoughtHiveFiveCount = TypeMemexPhoughtRePhinkListObj[0].PhoughtHiveFiveCount;
+	        						 var phoughtId = TypeMemexPhoughtRePhinkListObj[0].PhoughtId1;
+	        						 var IPhoughtHighFived = TypeMemexPhoughtRePhinkListObj[0].IPhoughtHighFived;;
+	        						 var phougth_hand_img = 'hand.png';
+	        						 
+	        						 if(IPhoughtHighFived == 1)
+	        						 {
+	        						 	phougth_hand_img = 'hand.png';
+	        						 }
+	        						 else
+	        						 {
+	        						 	phougth_hand_img = 'hand_gray.png';
+	        						 }
+	        						 if(userId == UsrId)
+	        						 {
+	        							 phoughtDisplay = 'display:block';
+	        						 }
+	        						 else
+	        						 {
+	        							 phoughtDisplay = 'display:none';
+	        						 }
+	        						 
+	        						 var comment = '<ul class="ul_comnts">';
+	        						 
+	        						 if(commentArr != '' && commentArr != null)
+	        						 {
+	        						 	 for(var comment_cnt = 0;comment_cnt<commentArr.length;comment_cnt++)
+		        						 {
+		        						 	if(commentArr[comment_cnt].Comment != -1)
+		        						 	{
+		        						 		var commentHandImage = ''
+		        						 		if(commentArr[comment_cnt].IHighFived != 0)
+		        						 		{
+				        						 	commentHandImage = 'hand.png';
+				        						}
+				        						else
+				        						{
+				        						 	commentHandImage = 'hand_gray.png';
+				        						}
+			        						 	if(commentArr[comment_cnt].CommentUserID == UsrId)
+			        						 	{
+			        						 		commentDisplay = 'display:block';
+			        						 	}
+			        						 	else
+			        						 	{
+			        						 		commentDisplay = 'display:none';
+			        						 	}
+			        						 	
+			        						 	if(commentArr[comment_cnt].Comment != -1)
+			        						 	{
+			        						 		comment += '<li><div class="coments"><span class="user_img"><a href="#"><img src="'+encodeURI(commentArr[comment_cnt].ProfileImage)+'" width="13" height="15" alt="hand"></a></span><div class="descrip"><p><a uid='+ commentArr[comment_cnt].CommentUserID+' href="#">'+commentArr[comment_cnt].UserFullName+'</a> '+ commentArr[comment_cnt].Comment+'</p> </div><span class="close_cmt" style="'+ commentDisplay+'" pid ="'+phoughtId+'" cid ="'+commentArr[comment_cnt].CommentID+'" ><a href="#"><img src="delet.png" width="25" height="25" alt="close"></a></span><div class="count"> <span class="no"><a href="#">'+commentArr[comment_cnt].HighFiveCount+'</a></span> <span cmt="'+commentArr[comment_cnt].CommentID+'" pid="'+phoughtId+'" hiveFiveStatus="'+commentArr[comment_cnt].IHighFived+'" class="hand pht_cmt_hand"><a href="#"><img src="'+commentHandImage+'" width="20" height="20" alt="hand"></a></span> </div></div></li>';
+			        						 	}
+			        					    }
+		        						 }
+	        						 }
+	        						 
+	        						 comment += '</ul>';
+	        						 
+	        						  var phoughtView = '<div class="thot"> <div class="thot_top"></div> <div class="thot_mid"> <span class="txt" style="color:white">'+ Phought +'</span> <div class="count"> <span class="no"><a href="#">'+ PhoughtHiveFiveCount +'</a></span> <span id="'+ phoughtId +'" hiveFiveStatus="'+ IPhoughtHighFived +'" class="hand pht_hand"><a href="#"><img src="'+ phougth_hand_img +'" width="20" height="20" alt="hand"></a></span> </div> </div> <div class="thot_botom"></div> '+ comment +'<span class="respond" pid="'+ phoughtId +'"><a href="#">Respond</a></span></div>';
+	        						 
+	        						 for(var c=0;c<imagesArr.length;c++)
+	        						 {
+	        						 	images += '<li><img alt="user" src="'+ imagesArr[c].MemexImageURL + '"></li>';
+	        						 }
+									
+   	        						 content = '<div class="phots_user"><div class="user_img"> <a href="#"><img alt="user" src="'+userImagePath+'"></a></div><p class="heading"> <a uid='+userId+' href="#">'+ userName +'</a> '+ heading +' </p> <span class="close" id ="'+phoughtId+'" style="'+ phoughtDisplay +'"><a href="#"><img src="delet.png" width="25" height="25" alt="close"></a></span><div class="discription">   <div class="hd"><a memexId='+ memexId +' memexOwnerId='+userId +' href="#">'+ memexTitle +'</a></div> <span class="hd_txt" style="color:#fff;">'+ memexBody +'</span> <ul class="post_images">'+ images + ' </ul> ' + phoughtView+ ' </div> </div>';
+   	        					 }
+   	        					  
+        						if(TypeMedalBffAlertListObj != null && TypeMedalBffAlertListObj != '')
+        						{
+        							var MedalImage = TypeMedalBffAlertListObj[0].MedalImage;
+        							var MedalTitle = TypeMedalBffAlertListObj[0].MedalTitle;
+        							var UserImagePath = encodeURI(TypeMedalBffAlertListObj[0].UserImagePath);
+        							var UserName = TypeMedalBffAlertListObj[0].UserName;
+        							var medalUserId = TypeMedalBffAlertListObj[0].RelatedUserId;
+        							
+        							if(TypeMedalBffAlertListObj[0].RelatedUserId == UsrId)
+	        						{
+	        					     	UserName = 'You';
+	        						}
+	        						else
+	        						{
+	        						    UserName = UserName;
+	        						}
+	        						
+	        						var medal = '<div class="bff_medal"><img src="'+ MedalImage +'" alt="medal_image"/></div>';
+	        						var content = '<div class="phots_user"><div class="user_img"> <a href="#"><img src="'+ UserImagePath +'"  alt="user"></a></div>';
+	        						description = '<p class="heading"><a uid='+medalUserId+' href="#">'+ UserName + '</a> just got the '+ MedalTitle +' on Phinkit. Check it out!</p><div class="discription">' + medal +'</div></div>'; 
+        						}
+        						
+	        					 content += description; 
+	        					 
+	        					 appendData += content;
+	        				}
+	        				      //var more = '<div class="more"></div>';
+	        				      var more = '';
+	        				      htmlData[RowNumber]= appendData; 
+	        				      if(toDo != 'html')
+	        				      {
+	        				      		$('.wrap').append(appendData);
+	        				      }
+	        				      else
+	        				      {
+	        				       		$('.wrap').html(appendData);
+	        				      }
+	        			 }
+	        			
+	        		 }
+	        	 }
+	        	 else
+	        	 {
+	        		 alert('Some Error Occure With Webservice');
+	        	 }
+	   });
+	 	
+	 	
+	 }
+	 Ti.App.fireEvent('removePhoughtComment');
+	 
+	 setInterval(function(){
+	 	showContent('html');
+	 },9000);
+	 
+	 showContent();
+	 
+	   var flag = 1;
+	   $('.phots_user .respond').live('click',function(e){
+	   	//alert('resopnd clicked');
+	   	/*
+	   	if(flag == 1)
+	   	{
+	   		$(this).siblings('.phought_response').slideDown();
+	   		$(this).css('margin','0px 0 0 0');
+	   		flag =0;
+	   	}
+	   	else
+	   	{
+	   		$(this).siblings('.phought_response').slideUp();
+	   		$(this).css('margin','14px 0 0 0');
+	   		flag = 1;
+	   	}
+	   	*/
+	   	
+	   	Ti.App.fireEvent('phoughtCommentWindow',{pid:$(this).attr('pid')});
+	   	
+	   	e.preventDefault();
+	   	
+	   });
+	   
+	   var focusFlag = 1
+	   $('.send_textarea').live('focus',function(){
+	   		$(this).blur();
+	    	if(focusFlag == 1)
+	    	{
+	    		Ti.App.fireEvent('sendPhoughtComment', {pid:$(this).attr('pid')});
+	    		focusFlag = 0;
+	    	}
+	    	else
+	    	{
+	    		Ti.App.fireEvent('removePhoughtComment');
+	    		focusFlag = 1;
+	    	}
+	    	
+	   });
+	  
+      $(document).click(function(){
+      	if(focusFlag == 0 && $(event.target).is('.send_textarea') == false)
+	   		{
+	   			Ti.App.fireEvent('removePhoughtComment');
+    			focusFlag = 1;
+	   		}
+      });
+       
+	    
+	   $('.phots_user .close').live('click',function(){
+	    	/*Ti.App.fireEvent('deletePhought', {pid:$(this).attr('id')});*/
+	    	
+	    	 Ti.App.fireEvent('showIndicator', {message:'Deleting Phought..'});
+	    	 var refObj = this;
+	    	 var obj = {
+	   	     	"LoggedInUserId" : userid,
+	   	     	"phoughtID" : $(this).attr('id')
+	   	     };
+	   	      
+	   	     var values = JSON.stringify(obj);
+	   	 
+	   	   	 $.ajax({
+			     type: "POST",
+			     url: baseUrl + "DeletePhoughtbyPhoughtId",
+			     data: values,
+			     contentType: " application/json; charset=utf-8",
+			     dataType: "json",
+			     cache:false,
+			     success:function(data)
+			     {
+			     	Ti.App.fireEvent('hideIndicator');
+			     	$(refObj).parent('.phots_user').hide('slow');
+			     },
+			     error:function(){
+			     	Ti.App.fireEvent('hideIndicator');
+			     }
+	  		 });
+	  		 return false;
+	   });
+	   
+	   $('.phots_user .close_cmt').live('click',function(){
+	    	/*Ti.App.fireEvent('deletePhoughtComment', {pid:$(this).attr('pid'),cid:$(this).attr('cid')});*/
+	    	 Ti.App.fireEvent('showIndicator', {message:'Deleting Comment..'});
+	    	 var refObj = this;
+	    	 var obj = {
+	   	     	"LoggedInUserId" : userid,
+	   	     	"phoughtID" : $(this).attr('pid'),
+				"CommentID" : $(this).attr('cid')
+	   	     };
+	   	      
+	   	     var values = JSON.stringify(obj);
+	   	 
+	   	   	 $.ajax({
+			     type: "POST",
+			     url: baseUrl + "DeletePhoughtCommentsbyPhoughtId",
+			     data: values,
+			     contentType: " application/json; charset=utf-8",
+			     dataType: "json",
+			     cache:false,
+			     success:function(data)
+			     {
+			     	Ti.App.fireEvent('hideIndicator');
+			     	$(refObj).parent('.coments').hide('slow');
+			     },
+			     error:function(){
+			     	Ti.App.fireEvent('hideIndicator');
+			     }
+	  		 });
+	  		 return false;
+	   });
+	   
+	   $('.phots_user .heading a ,.ul_comnts li .coments .descrip p a').live('click',function(){
+	   	
+	   		//alert($(this).attr('uid'));
+	    	Ti.App.fireEvent('getUserProfile', {user_id:$(this).attr('uid')});
+	   });
+	   
+	   $('.phots_user .pht_hand').live('click',function(){
+	   	
+	   		var currentDate = new Date();
+	 	
+	 		var refObj = this;
+	   	    var status = '' ;
+	   	    if($(this).attr('hiveFiveStatus')==1 || $(this).attr('hiveFiveStatus') == 'true')
+	   	    {
+	   	    	status = 'UnHighFive';
+	   	    	handImage = 'hand_gray.png';
+	   	    }
+	   	    else
+	   	    {
+	   	    	status = 'HighFive';
+	   	    	handImage = 'hand.png';
+	   	    }
+	   	    
+	   	     var obj = {
+	   	     	"LoggedInUserId" : userid,
+	   	     	"phoughtID" : parseInt($(this).attr('id')),
+	   	     	"IsHighFiveOrUnHighFighPhoughtStatus" : status,
+	   	     	'IsRefreshFlag': currentDate.getTime()
+	   	     };
+	   	      
+	   	     var values = JSON.stringify(obj);
+	   	    // values = '{"LoggedInUserId":"aaa4e96e-7fe9-45fd-9179-284e18c78c7a","phoughtID":'+ parseInt($(this).attr('id')) +',"IsHighFiveOrUnHighFighPhoughtStatus":"' + status +'"}';
+	   	     //values = '{"LoggedInUserId":"aaa4e96e-7fe9-45fd-9179-284e18c78c7a","phoughtID":822,"IsHighFiveOrUnHighFighPhoughtStatus":"HighFive"}';
+	   	  //  alert(values)
+	    	 $.ajax({
+			     type: "POST",
+			     url: baseUrl + "SetHighFiveToPhoughts",
+			     data: values,
+			     contentType: " application/json; charset=utf-8",
+			     dataType: "json",
+			     cache:false,
+			     success:function(data)
+			     {
+			     	// alert('Hive Five Count=' +  data.HighFiveCount);
+			     	 $(refObj).attr('hiveFiveStatus',data.HighFiveStatus);
+			     	 $(refObj).siblings('.no').children('a').html(data.HighFiveCount);
+			     	 $(refObj).children('a').children('img').attr('src',handImage);
+			     }
+	  		 });
+	  		 return false;
+	   });
+	   //alert('sdf');
+	   
+	   
+	   $('.thot_mid .txt a').live('click',function(event){
+	   	
+	   		var site_url = $(this).attr('href');
+	   		if(site_url.indexOf("http://www.phinkit.com/Memex/") != -1 || site_url.indexOf("https://www.phinkit.com/Memex/") != -1)
+			{
+				site_url = site_url.replace("http://www.phinkit.com/Memex/","");
+				site_url = site_url.replace("https://www.phinkit.com/Memex/","");
+				
+				Ti.App.fireEvent('goToMemexDetail', {url : site_url});
+			}
+			else
+			{
+				Ti.App.fireEvent('openUrl',{url:$(this).attr('href')});
+			}
+	   		
+	   		event.preventDefault();
+	   });
+	   
+	   $('.discription .hd a').live('click',function(){
+	   		//alert($(this).attr('memexOwnerId'));
+	   		Ti.App.fireEvent('goToMemex',{memexId:$(this).attr('memexId'),memexOwnerId:$(this).attr('memexOwnerId')});
+	   });
+	   
+	   $('.phots_user .pht_cmt_hand').live('click',function(){
+	   	     var currentDate = new Date();
+	   	    //alert($(this).attr('pid') + '==' + $(this).attr('cmt') + '==' + $(this).attr('hiveFiveStatus'));
+	   	    var refObj = $(this);
+	   	    var status = '' ;
+	   	    var handImage = '';
+	   	    if($(this).attr('hiveFiveStatus')==1 || $(this).attr('hiveFiveStatus') == 'true')
+	   	    {
+	   	    	status = 'UnHighFive';
+	   	    	handImage = 'hand_gray.png';
+	   	    }
+	   	    else
+	   	    {
+	   	    	status = 'HighFive';
+	   	    	handImage = 'hand.png';
+	   	    }
+	   	      var obj = {
+	   	     	'LoggedInUserId' : userid,
+	   	     	'CommentID' : $(this).attr('cmt'),
+	   	     	'phoughtID' : $(this).attr('pid'),
+	   	     	'IsHighFiveOrUnHighFighStatus' : 'HighFive',
+	   	     	'IsRefreshFlag': currentDate.getTime()
+	   	     }
+	   	    
+	   	     var values = JSON.stringify(obj);
+	   	   
+	    	 $.ajax({
+			     type: "POST",
+			     url: baseUrl + "SetHighFiveToPhoughtComment",
+			     data: values,
+			     contentType: "application/json; charset=utf-8",
+			     dataType: "json",
+			     cache:false,
+			     success:function(data)
+			     {
+			     	//alert('Hive Five Count=' +  data.HighFiveCount);
+			     	$(refObj).attr('hiveFiveStatus',data.HighFiveStatus);
+			     	$(refObj).siblings('.no').children('a').html(data.HighFiveCount);
+			     	$(refObj).children('a').children('img').attr('src',handImage);
+			     }
+	  		 });
+	  		 
+	  		  return false;
+	   });
+	   
+	   /*
+	   $('.wrap .more').live('click',function(){
+	   		RowNumber = parseInt(RowNumber) + 9;
+	   		$(this).css('display','none');
+	   		$('#loading').fadeIn('normal');
+	   	    showContent(); 
+	   });
+	   */
+	   
+	   $(document).scroll(function (e) {
+	   		RowNumber = parseInt(RowNumber) + 9;
+	   		NumberOfRowsCount += 9;
+	   	    showContent(); 
+	   })
+  	
+</script>
+
+</head>
+
+<body>
+<div id="loading"></div>
+<div class="wrap"></div>
+
+<!--<div id="loading_bottom"></div>
+
+<div class="wrap">
+
+  <div class="phots_user">
+		<div class="user_img"> <a href="#"><img src="user.png" width="42" height="42" alt="user"></a></div>
+		
+		<div class="discription">
+        <p class="heading">         
+<a href="#">Hatim User</a> has updated profile     
+        </p>
+    </div>
+        
+</div>
+
+<div class="phots_user">
+		<div class="user_img"> <a href="#"><img src="user.png" width="42" height="42" alt="user"></a></div>
+		
+		<div class="discription">
+        <p class="heading">         
+<a href="#">Hatim User</a> has updated profile     
+        </p>
+        
+        <span class="close"><a href="#"><img src="delet.png" width="15" height="15" alt="close"></a></span>
+        
+        
+        <div class="thot">        
+        <div class="thot_top"></div>
+        <div class="thot_mid">
+        <span class="txt">asdasddasd</span>
+        <div class="count">
+       <span class="no"><a href="#">2</a></span>
+       <span class="hand"><a href="#"><img src="hand_gray1.png" width="13" height="15" alt="hand"></a></span>
+        
+        </div>
+        
+        </div>
+        <div class="thot_botom"></div>
+        
+        </div>
+        <div class="phought_response">
+          	<div class="phought_response_cnt">
+          		<div class="phought_text">
+          			<img alt="user image" src="user.png" height="35" width="35"/>
+          			<textarea>Write Your Response</textarea>
+          		</div>
+          		<p><button>send</button></p>
+          	</div>
+        </div>	
+<span class="respond"><a href="#">Respond</a></span>
+    </div>
+        
+</div>
+
+
+
+<div class="phots_user">
+		<div class="user_img"> <a href="#"><img width="42" height="42" alt="user" src="user.png"></a></div>
+		
+		<div class="discription">
+        <p class="heading">         
+<a href="#">Hatim User</a> has updated profile     
+        </p>
+        
+        <span class="close"><a href="#"><img width="15" height="15" alt="close" src="delet.png"></a></span>
+
+<div class="hd"><a href="#">Mixed Fruit from firefox</a></div>
+<span class="hd_txt">Mixed Fruit from firefox</span>
+
+
+<ul class="post_images">
+<li><img alt="user" src="image3.jpeg"></li>
+<li><img alt="user" src="image3.jpeg"></li>
+</ul>
+    </div>
+        
+</div>
+  
+  <div class="phots_user">
+		<div class="user_img"> <a href="#"><img src="user.png" width="42" height="42" alt="user"></a></div>
+		
+		<div class="discription">
+        <p class="heading">         
+<a href="#">Hatim User</a> has updated profile     
+        </p>
+
+		 <div class="thot">        
+        <div class="thot_top"></div>
+        <div class="thot_mid">
+        <span class="txt">asdasddasd</span>
+        <div class="count">
+       <span class="no"><a href="#">2</a></span>
+       <span class="hand"><a href="#"><img src="hand_gray.png" width="13" height="15" alt="hand"></a></span>       
+        </div>
+        
+        </div>
+        <div class="thot_botom"></div>
+        
+        </div>
+
+<ul class="ul_comnts">
+<li>
+<div class="coments">
+<span class="user_img"><a href="#"><img src="medium.jpeg" width="13" height="15" alt="hand"></a></span>
+<div class="descrip"><p><a href="#">Hatim User</a> has updated profile</p>  </div>
+<div class="count">
+       <span class="no"><a href="#">2</a></span>
+       <span class="hand"><a href="#"><img src="hand.png" width="13" height="15" alt="hand"></a></span>       
+        </div>
+</div>
+
+</li>
+
+<li>
+<div class="coments">
+<span class="user_img"><a href="#"><img src="medium.jpeg" width="13" height="15" alt="hand"></a></span>
+<div class="descrip"><p><a href="#">Hatim User</a> has updated profile</p>  </div>
+<div class="count">
+       <span class="no"><a href="#">2</a></span>
+       <span class="hand"><a href="#"><img src="hand.png" width="13" height="15" alt="hand"></a></span>       
+        </div>
+</div>
+
+</li>
+
+<li>
+<div class="coments">
+<span class="user_img"><a href="#"><img src="medium.jpeg" width="13" height="15" alt="hand"></a></span>
+<div class="descrip"><p><a href="#">Hatim User</a> has updated profile</p>  </div>
+<div class="count">
+       <span class="no"><a href="#">2</a></span>
+       <span class="hand"><a href="#"><img src="hand.png" width="13" height="15" alt="hand"></a></span>       
+        </div>
+</div>
+
+</li>
+
+
+<li>
+<div class="coments">
+<span class="user_img"><a href="#"><img src="medium.jpeg" width="13" height="15" alt="hand"></a></span>
+<div class="descrip"><p><a href="#">Hatim User</a> has updated profile</p>  </div>
+<div class="count">
+       <span class="no"><a href="#">2</a></span>
+       <span class="hand"><a href="#"><img src="hand.png" width="13" height="15" alt="hand"></a></span>       
+        </div>
+</div>
+
+</li>
+
+<li>
+<div class="coments">
+<span class="user_img"><a href="#"><img src="medium.jpeg" width="13" height="15" alt="hand"></a></span>
+<div class="descrip"><p><a href="#">Hatim User</a> has updated profile</p>  </div>
+<div class="count">
+       <span class="no"><a href="#">2</a></span>
+       <span class="hand"><a href="#"><img src="hand.png" width="13" height="15" alt="hand"></a></span>       
+        </div>
+</div>
+
+</li>
+
+
+</ul>
+
+
+
+
+<span class="respond"><a href="#">Respond</a></span>
+    </div>
+        
+</div>  
+</div>    
+	
+-->
+
+</body></html>

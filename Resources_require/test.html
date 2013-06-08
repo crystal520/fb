@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+	
+<head>
+	<script type="text/javascript">
+	
+		function enterFullscreen() 
+		{	
+			  var elem = document.querySelector('body');
+			  
+			  var value = navigator.userAgent.search("Firefox");
+			  
+			  console.log(navigator.userAgent + 'val = ' + value);
+			  
+			  if( value > 0 )
+			  {	  
+			  	  elem.mozfullscreenchange = function(e) 
+				  {
+				    console.log("Entered fullscreen!");
+				    elem.onmozfullscreenchange = onFullscreenExit;
+				  };
+				  elem.mozRequestFullScreen();
+			  }
+			  else
+			  {
+				  elem.onwebkitfullscreenchange = function(e) 
+				  {
+				    console.log("Entered fullscreen!");
+				    elem.onwebkitfullscreenchange = onFullscreenExit;
+				  };
+				  elem.webkitRequestFullScreen();
+			  }
+		}
+		
+	</script>
+	
+</head>		
+
+<body>
+	
+	<img src="iphone/Default-Landscape.png" >
+	<button onclick="enterFullscreen()">Get Huge!</button>
+	
+</body>
+
+</html>

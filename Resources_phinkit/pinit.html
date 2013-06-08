@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript" src="http://assets.pinterest.com/js/pinit.js"></script>
+		<script type="textt/javascript">
+		
+			 var pinUrl = "http://pinterest.com/pin/create/button;
+			 var SiteUrl = 'http://www.phinkit.com';
+				
+			 var params = {
+		            url: SiteUrl + "/Memex/Need-Ideas-Put-Yourself-In-Panic-Mode",
+		            media: "http://www.phinkit.com/Images/memex/634826257613365989Simonfollowme.jpg",
+		            description: "Another great Memex post on Phinkit" + "\nhttp://www.phinkit.com/Images/memex/634826257613365989Simonfollowme.jpg"
+		        };
+
+			 var layout = "http://www.phinkit.com/Memex/Need-Ideas-Put-Yourself-In-Panic-Mode"; 
+			 var sep = "?";
+	         for (var k in params) {
+	            if (!params[k]) continue;
+	            pinUrl += sep + k + "=" + encodeURIComponent(params[k]);
+	            sep = "&";
+	         }
+	         
+	         var linkCode = '<a href="' + pinUrl + '" class="pinterest"' + ' count-layout="' + layout + '" target="_blank" id="btpinterest">Update on Pinterest</a>';
+
+        	$("#PinItCode").val(linkCode);
+		</script>
+	</head>
+	<body>
+		<span id="PinItCode"></span>
+	</body>
+</html>

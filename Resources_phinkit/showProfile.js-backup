@@ -1,0 +1,427 @@
+var moreFlag = 0;
+var showProfileWindowObj = Ti.UI.currentWindow;
+
+showProfileWindowObj.setBackgroundImage('bg.png');
+
+/******Header View Start********/
+setTimeout(function(){
+	var headerModule = require('header').addHeader;
+	var headerView = new headerModule('Profile');
+	
+	showProfileWindowObj.add(headerView);
+},1000);
+
+/******Header View End********/
+
+var actInd = Ti.UI.createActivityIndicator({
+	height:55,
+    width:'auto',
+    color:'#FFFFFF',
+    backgroundColor:'#000',
+    opacity:0.9,
+    borderRadius:5,
+    borderColor:'#000',
+    zIndex : 1,
+    font:{fontFamily:'Helvetica Neue', fontSize:18},
+    message:' Loading Data...',
+    style:Titanium.UI.iPhone.ActivityIndicatorStyle.BIG,
+});
+
+showProfileWindowObj.add(actInd);
+
+var profileTable = Ti.UI.createTableView({
+	top : '15%',
+	height : 'auto',
+	backgroundColor : 'transparent',
+	separatorStyle: Titanium.UI.iPhone.TableViewSeparatorStyle.NONE,
+});
+
+showProfileWindowObj.add(profileTable);
+
+var inputRow = []
+
+/******Content View Start *******/
+
+showProfileWindowObj.addEventListener('focus',function(){
+	actInd.show();
+	
+	var serverURL = Ti.App.Properties.getString('baseurl')+'GetUserEditProfileDetailsByUserId';
+	var xhr = Titanium.Network.createHTTPClient();    
+    
+    xhr.open("POST", serverURL);
+ 	xhr.setRequestHeader("Content-Type","application/json; charset=utf-8");
+    
+    var userid = showProfileWindowObj.user_id;
+    
+    var params = { UserId : userid };
+ 	var widgets = JSON.stringify(params);
+ 	console.log(widgets);
+ 	xhr.send(widgets);
+   
+    xhr.onload = function(){
+     //alert("responseText: " + this.responseText);
+     if(this.status == '200'){
+        
+        console.log(this.responseText);
+        
+        if(this.readyState == 4){
+        	
+        	var parsed_data = JSON.parse(this.responseText);	
+        	console.log(parsed_data.status);
+        	
+        	if(parsed_data.status == 'Success')
+        	{
+        		var userProfileImageRow = Ti.UI.createTableViewRow({
+					backgroundColor : 'transparent',
+					height : 300,
+				});
+				
+				if(parsed_data.ProfileImage != '' && parsed_data.ProfileImage != '-1')
+				{
+					var userProfileImage = Ti.UI.createImageView({
+						width : 300,
+						height : 250,
+						image : encodeURI(parsed_data.ProfileImage),
+					});
+					
+					userProfileImageRow.add(userProfileImage)
+				}
+								
+				inputRow.push(userProfileImageRow);
+				
+				var profileDetailScrollView = Ti.UI.createTableViewRow({
+					top : '5%',
+					left : '1%',
+					width : 317,
+					height : 500,
+					backgroundImage : 'contentarea.png',
+				});
+				
+				inputRow.push(profileDetailScrollView);
+				
+				var tableViewRow = Ti.UI.createTableView({
+					top : '5%',
+					backgroundColor : 'transparent',
+					scrollable : false,
+					separatorStyle : Ti.UI.iPhone.TableViewSeparatorStyle.NONE
+				});
+				
+				profileDetailScrollView.add(tableViewRow);
+				
+				var profileData = [];
+					if(parsed_data.FirstName != '-1')
+        		{
+        			var fnameRow = Ti.UI.createTableViewRow({
+						width : '317',
+						height : '50',
+						backgroundColor : 'transparent',
+					});
+					
+					var fnameLabel = Ti.UI.createLabel({
+						text : 'First Name :',
+						top : '0%',
+						left : '10%',
+						color : '#fff',
+						font:{fontSize:15},
+					});
+					
+					var fname = Ti.UI.createLabel({
+						text : parsed_data.FirstName,
+						top : '0%',
+						color : '#fff',
+						left : '35%',
+						font:{fontSize:1},
+					});
+					
+					fnameRow.add(fnameLabel);
+					fnameRow.add(fname);
+					
+					profileData.push(fnameRow);
+        		}
+        		
+        		if(parsed_data.Surname != '-1')
+        		{
+        			var lnameRow = Ti.UI.createTableViewRow({
+						width : '317',
+						height : '50',
+						backgroundColor : 'transparent',
+					});
+					
+					var lnameLabel = Ti.UI.createLabel({
+						text : 'Last Name :',
+						top : '0%',
+						left : '10%',
+						color : '#fff',
+						font:{fontSize:15},
+					});
+					
+					var lname = Ti.UI.createLabel({
+						text : parsed_data.Surname,
+						top : '0%',
+						color : '#fff',
+						left : '35%',
+						font:{fontSize:15},
+					});
+					
+					lnameRow.add(lnameLabel);
+					lnameRow.add(lname);
+					
+					profileData.push(lnameRow);
+        		}
+        		
+        		if(parsed_data.Email != '-1')
+        		{
+        			var emailRow = Ti.UI.createTableViewRow({
+						width : '317',
+						height : '50',
+						backgroundColor : 'transparent',
+					});
+					
+					var emailLabel = Ti.UI.createLabel({
+						text : 'Email :',
+						top : '0%',
+						left : '10%',
+						color : '#fff',
+						font:{fontSize:15},
+					});
+					
+					var email1 = Ti.UI.createLabel({
+						text : parsed_data.Email,
+						top : '0%',
+						color : '#fff',
+						left : '35%',
+						font:{fontSize:15},
+					});
+					
+					emailRow.add(emailLabel);
+					emailRow.add(email1);
+					
+					profileData.push(emailRow);
+        		}
+        		
+        		if(parsed_data.DateOfBirth != '-1')
+        		{
+        			var dateStr = parsed_data.DateOfBirth;
+				    var dateStrLength = dateStr.length-2;
+				    var dateObj = new Date(parseInt(dateStr.substring(6,dateStrLength)));
+				    var dob_value = (dateObj.getMonth() + 1) + '/' + dateObj.getDate() +'/'+ dateObj.getFullYear();
+					
+					var dobRow = Ti.UI.createTableViewRow({
+						width : '317',
+						height : '50',
+						backgroundColor : 'transparent',
+					});
+					
+					var dobLabel = Ti.UI.createLabel({
+						text : 'Date of Birth :',
+						top : '0%',
+						left : '10%',
+						color : '#fff',
+						font:{fontSize:15},
+					});
+					
+					var dob = Ti.UI.createLabel({
+						text : dob_value,
+						top : '0%',
+						color : '#fff',
+						left : '35%',
+						font:{fontSize:15},
+					});
+					
+					dobRow.add(dobLabel);
+					dobRow.add(dob);
+					
+					profileData.push(dobRow);
+        		}
+
+				if( parsed_data.PostalOrZipCode != "" && parsed_data.PostalOrZipCode != '-1')
+        		{
+        			var postCodeRow = Ti.UI.createTableViewRow({
+						width : '317',
+						height : '50',
+						backgroundColor : 'transparent',
+					});
+					
+					var postCodeLabel = Ti.UI.createLabel({
+						text : 'Post Code :',
+						top : '0%',
+						left : '10%',
+						color : '#fff',
+						font:{fontSize:15},
+					});
+					
+					var postCode = Ti.UI.createLabel({
+						text : parsed_data.PostalOrZipCode,
+						top : '0%',
+						color : '#fff',
+						left : '35%',
+						font:{fontSize:15},
+					});
+					
+					postCodeRow.add(postCodeLabel);
+					postCodeRow.add(postCode);
+					
+					profileData.push(postCodeRow);
+        		}
+        		
+        		if(parsed_data.Location != '-1' && parsed_data.Location != "")
+        		{
+        			var locationRow = Ti.UI.createTableViewRow({
+						width : '317',
+						height : '50',
+						backgroundColor : 'transparent',
+					});
+					
+					var locationLabel = Ti.UI.createLabel({
+						text : 'Location :',
+						top : '0%',
+						left : '10%',
+						color : '#fff',
+						font:{fontSize:15},
+					});
+					
+					var location = Ti.UI.createLabel({
+						text : parsed_data.Location,
+						top : '0%',
+						color : '#fff',
+						left : '35%',
+						font:{fontSize:15},
+					});
+					
+					locationRow.add(locationLabel);
+					locationRow.add(location);
+					
+					profileData.push(locationRow);
+        		}
+        		
+        		if(parsed_data.CountryID != '-1' && parsed_data.Location != "")
+        		{
+        			var countryRow = Ti.UI.createTableViewRow({
+						width : 317,
+						height : 50,
+						backgroundColor : 'transparent',
+					});
+					
+					var countryLabel = Ti.UI.createLabel({
+						text : 'Country :',
+						top : '0%',
+						left : '10%',
+						color : '#fff',
+						font:{fontSize:15},
+					});
+					
+					var country = Ti.UI.createLabel({
+						text : parsed_data.Country,
+						top : '0%',
+						color : '#fff',
+						left : '35%',
+						font:{fontSize:15},
+					});
+					
+					countryRow.add(countryLabel);
+					countryRow.add(country);
+					
+					profileData.push(countryRow);
+        		}
+        			if(parsed_data.JobTitle != '-1' && parsed_data.Location != "")
+        		{
+        			var jobTitleRow = Ti.UI.createTableViewRow({
+						width : 317,
+						height : 50,
+						backgroundColor : 'transparent',
+					});
+					
+					var jobTitleLabel = Ti.UI.createLabel({
+						text : 'Job  :',
+						top : '0%',
+						left : '10%',
+						color : '#fff',
+						font:{fontSize:15},
+					});
+					
+					var jobTitle = Ti.UI.createLabel({
+						text : parsed_data.JobTitle,
+						top : '0%',
+						color : '#fff',
+						left : '35%',
+						font:{fontSize:15},
+					});
+					
+					jobTitleRow.add(jobTitleLabel);
+					jobTitleRow.add(jobTitle);
+					
+					profileData.push(jobTitleRow);
+        		}
+        		if(parsed_data.Company != '-1' && parsed_data.Location != "")
+        		{
+        			var companyRow = Ti.UI.createTableViewRow({
+						width : 317,
+						height : 50,
+						backgroundColor : 'transparent',
+					});
+					
+					var companyLabel = Ti.UI.createLabel({
+						text : 'Company  :',
+						top : '0%',
+						left : '10%',
+						color : '#fff',
+						font:{fontSize:15},
+					});
+					
+					var companyTitle = Ti.UI.createLabel({
+						text : parsed_data.Company,
+						top : '0%',
+						color : '#fff',
+						left : '35%',
+						font:{fontSize:15},
+					});
+					
+					companyRow.add(companyLabel);
+					companyRow.add(companyTitle);
+					
+					profileData.push(companyRow);
+        		}
+        		if(parsed_data.Gender != '-1' && parsed_data.Location != "" )
+        		{
+        			var genderRow = Ti.UI.createTableViewRow({
+						width : 317,
+						height : 50,
+						backgroundColor : 'transparent',
+					});
+					
+					var genderLabel = Ti.UI.createLabel({
+						text : 'Gender  :',
+						top : '0%',
+						left : '10%',
+						color : '#fff',
+						font:{fontSize:15},
+					});
+					
+					var genderTitle = Ti.UI.createLabel({
+						text : parsed_data.Gender,
+						top : '0%',
+						color : '#fff',
+						left : '35%',
+						font:{fontSize:15},
+					});
+					
+					genderRow.add(genderLabel);
+					genderRow.add(genderTitle);
+					
+					profileData.push(genderRow);
+        		}
+                     
+        		profileTable.setData(inputRow);
+
+				tableViewRow.setData(profileData);
+				
+				//profileDetailScrollView.add(profileTable);
+			}
+        	actInd.hide();
+        }
+      }
+    };
+    
+    xhr.onerror = function(e){console.log(e.source); alert('Transmission error: ' + e.error);};
+    actInd.hide();    		
+});
