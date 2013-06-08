@@ -20,7 +20,6 @@
 	BOOL animated;
     NSUInteger accumulatedOrientationChanges;
 	BOOL showDialog;
-    BOOL persistentFlag;
 }
 
 @property(nonatomic,retain,readwrite)	TiViewProxy *dialogView;

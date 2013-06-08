@@ -11,8 +11,8 @@
 #import "ASIHTTPRequestConfig.h"
 
 typedef enum _ASIPostFormat {
-    TI_ASIMultipartFormDataPostFormat = 0,
-    TI_ASIURLEncodedPostFormat = 1
+    ASIMultipartFormDataPostFormat = 0,
+    ASIURLEncodedPostFormat = 1
 	
 } ASIPostFormat;
 

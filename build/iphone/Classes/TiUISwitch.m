@@ -31,11 +31,6 @@
 	return switchView;
 }
 
-- (id)accessibilityElement
-{
-	return [self switchView];
-}
-
 -(BOOL)hasTouchableListener
 {
 	// since this guy only works with touch events, we always want them

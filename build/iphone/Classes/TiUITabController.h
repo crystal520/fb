@@ -15,7 +15,6 @@
 @interface TiUITabController : TiViewController<TiTabController> {
 @private
 //Window is now the superclass's proxy.
-//This is an assign only property. Tabs retain instances of TiTabController.
 	TiUITabProxy *tab;
 }
 

@@ -20,7 +20,7 @@
 @private
 	UINavigationController *controller;
 	TiUITabController *rootController;
-	//This is an assign only property. TabGroup retains instances of tab.
+	
 	TiUITabGroupProxy *tabGroup;
 	TiUITabController *current;
     
@@ -40,7 +40,8 @@
 -(UINavigationController*)controller;
 -(void)setTabGroup:(TiUITabGroupProxy*)proxy;
 -(void)removeFromTabGroup;
--(void)closeWindow:(TiWindowProxy *)window animated:(BOOL)animated;
+- (void)closeTab;
+-(void)closeWindow:(TiWindowProxy *)window animated:(BOOL)animated removeTab:(BOOL)removeTab;
 -(void)windowClosing:(TiWindowProxy*)window animated:(BOOL)animated;
 
 #pragma mark Public APIs
@@ -57,8 +58,8 @@
 - (void)handleDidBlur:(NSDictionary *)event;
 - (void)handleWillFocus;
 - (void)handleDidFocus:(NSDictionary *)event;
-- (void)handleWillShowViewController:(UIViewController *)viewController animated:(BOOL)animated;
-- (void)handleDidShowViewController:(UIViewController *)viewController animated:(BOOL)animated;
+- (void)handleWillShowViewController:(UIViewController *)viewController;
+- (void)handleDidShowViewController:(UIViewController *)viewController;
 
 @end
 

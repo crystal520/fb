@@ -33,7 +33,6 @@
 // these transform values will scale it when we have our own overlay
 
 #define CAMERA_TRANSFORM_Y 1.23
-#define CAMERA_TRANSFORM_Y_ALT 1.67
 #define CAMERA_TRANSFORM_X 1
 
 enum  
@@ -101,7 +100,6 @@ static NSDictionary* TI_filterableItemProperties;
 -(void)destroyPicker
 {
 	RELEASE_TO_NIL(popover);
-	[self forgetProxy:cameraView];
     RELEASE_TO_NIL(cameraView);
 	RELEASE_TO_NIL(editor);
 	RELEASE_TO_NIL(editorSuccessCallback);
@@ -219,7 +217,7 @@ static NSDictionary* TI_filterableItemProperties;
 	else
 	{
 		RELEASE_TO_NIL(popover);
-		UIView *poView = [[[tiApp controller] topWindow] view];
+		UIView *poView = [tiApp controller].view;
 		CGRect poFrame;
 		TiViewProxy* popoverViewProxy = [args objectForKey:@"popoverView"];
 		UIPopoverArrowDirection arrow = [TiUtils intValue:@"arrowDirection" properties:args def:UIPopoverArrowDirectionAny];
@@ -236,11 +234,6 @@ static NSDictionary* TI_filterableItemProperties;
 			poFrame.size.height = 50;
 		}
 
-		if ([poView window] == nil) {
-			// No window, so we can't display the popover...
-			DebugLog(@"[WARN] Unable to display picker; view is not attached to the current window");
-			return;
-		}
 		//FROM APPLE DOCS
 		//If you presented the popover from a target rectangle in a view, the popover controller does not attempt to reposition the popover. 
 		//In thosecases, you must manually hide the popover or present it again from an appropriate new position.
@@ -291,16 +284,10 @@ static NSDictionary* TI_filterableItemProperties;
 	if (popover) {
 		//GO AHEAD AND RE-PRESENT THE POPOVER NOW 
 		CGRect popOverRect = [popoverView bounds];
-		if (popoverView == [[[[TiApp app] controller] topWindow] view]) {
+		if (popoverView == [[TiApp app] controller].view) {
 			popOverRect.size.height = 50;
 		}
-        if ([popoverView window] == nil) {
-            // No window, so we can't display the popover...
-            DebugLog(@"[WARN] Unable to display picker; view is not attached to the current window");
-        }
-        else {
-            [popover presentPopoverFromRect:popOverRect inView:popoverView permittedArrowDirections:arrowDirection animated:NO];
-        }
+		[popover presentPopoverFromRect:popOverRect inView:popoverView permittedArrowDirections:arrowDirection animated:NO];
 	}
 	isPresenting = NO;
 }
@@ -321,7 +308,6 @@ static NSDictionary* TI_filterableItemProperties;
 	}
     if (cameraView != nil) {
         [cameraView windowDidClose];
-		[self forgetProxy:cameraView];
         RELEASE_TO_NIL(cameraView);
     }
 }
@@ -471,12 +457,7 @@ static NSDictionary* TI_filterableItemProperties;
 		else if (cameraView!=nil)
 		{
 			// we use our own fullscreen transform if the developer didn't supply one
-            if ([TiUtils isRetinaFourInch]) {
-                picker.cameraViewTransform = CGAffineTransformScale(picker.cameraViewTransform, CAMERA_TRANSFORM_X, CAMERA_TRANSFORM_Y_ALT);
-            }
-            else {
-                picker.cameraViewTransform = CGAffineTransformScale(picker.cameraViewTransform, CAMERA_TRANSFORM_X, CAMERA_TRANSFORM_Y);
-            }
+			picker.cameraViewTransform = CGAffineTransformScale(picker.cameraViewTransform, CAMERA_TRANSFORM_X, CAMERA_TRANSFORM_Y);
 		}
 	}
 	
@@ -915,12 +896,7 @@ MAKE_SYSTEM_PROP(VIDEO_FINISH_REASON_USER_EXITED,MPMovieFinishReasonUserExited);
 -(void)showCamera:(id)args
 {
 	ENSURE_SINGLE_ARG_OR_NIL(args,NSDictionary);
-	if (![NSThread isMainThread]) {
-		[self rememberProxy:[args objectForKey:@"overlay"]];
-		TiThreadPerformOnMainThread(^{[self showCamera:args];},NO);
-		return;
-	}
-
+	ENSURE_UI_THREAD(showCamera,args);
 	[self showPicker:args isCamera:YES];
 }
 
@@ -1133,7 +1109,6 @@ MAKE_SYSTEM_PROP(VIDEO_FINISH_REASON_USER_EXITED,MPMovieFinishReasonUserExited);
 		}
         if (cameraView != nil) {
             [cameraView windowDidClose];
-			[self forgetProxy:cameraView];
             RELEASE_TO_NIL(cameraView);
         }
 		[self destroyPicker];

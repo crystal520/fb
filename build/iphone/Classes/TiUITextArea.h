@@ -10,22 +10,12 @@
 
 #import "TiUITextWidget.h"
 
-@interface TiUITextViewImpl : UITextView {
-@private
-    TiUIView * touchHandler;
-    UIView * touchedContentView;
-}
--(void)setTouchHandler:(TiUIView*)handler;
-@end
-
 @interface TiUITextArea : TiUITextWidget <UITextViewDelegate>
 {
 @private
-	BOOL becameResponder;
-    BOOL returnActive;
+	BOOL returnActive;
 }
 
-@property(nonatomic,readonly) BOOL becameResponder;
 @end
 
 #endif

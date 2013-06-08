@@ -17,9 +17,6 @@
 #import "LauncherItem.h"
 #import "LauncherButton.h"
 
-static const NSInteger kDashboardViewDefaultRowCount = 3;
-static const NSInteger kDashboardViewDefaultColumnCount = 3;
-
 @implementation TiUIDashboardView
 
 -(void)dealloc
@@ -37,11 +34,7 @@ static const NSInteger kDashboardViewDefaultColumnCount = 3;
 {
 	if (launcher==nil)
 	{
-		int rowCount = [TiUtils intValue:[self.proxy valueForKey:@"rowCount"] def:kDashboardViewDefaultRowCount];
-		int columnCount = [TiUtils intValue:[self.proxy valueForKey:@"columnCount"] def:kDashboardViewDefaultColumnCount];
-		launcher = [[LauncherView alloc] initWithFrame:CGRectMake(0, 0, 320, 400) 
-                                          withRowCount:rowCount 
-                                       withColumnCount:columnCount];
+		launcher = [[LauncherView alloc] initWithFrame:CGRectMake(0, 0, 320, 400)];
 		launcher.delegate = self;
         [launcher setEditable:[[[self proxy] valueForUndefinedKey:@"editable"] boolValue]];
 		[self addSubview:launcher];
@@ -49,17 +42,15 @@ static const NSInteger kDashboardViewDefaultColumnCount = 3;
 	return launcher;
 }
 
-- (id)accessibilityElement
-{
-	return [self launcher];
-}
-
 -(void)frameSizeChanged:(CGRect)frame bounds:(CGRect)bounds
 {
 	if (!CGRectIsEmpty(bounds))
 	{
 		[TiUtils setView:launcher positionRect:bounds];
-		[launcher layoutButtons];
+		if(launcher.editing == NO)
+		{
+			[launcher recreateButtons];
+		}
 	}
     [super frameSizeChanged:frame bounds:bounds];
 }
@@ -132,20 +123,12 @@ static const NSInteger kDashboardViewDefaultColumnCount = 3;
 	[event setObject:item.userData forKey:@"item"];
 	
 	if ([self.proxy _hasListeners:@"dragStart"])
-	{	//TODO: Deprecate old event
+	{
 		[self.proxy fireEvent:@"dragStart" withObject:event];
 	}
 	if ([item.userData _hasListeners:@"dragStart"])
-	{	//TODO: Deprecate old event
+	{
 		[item.userData fireEvent:@"dragStart" withObject:event];
-	}
-	if ([self.proxy _hasListeners:@"dragstart"])
-	{
-		[self.proxy fireEvent:@"dragstart" withObject:event];
-	}
-	if ([item.userData _hasListeners:@"dragstart"])
-	{
-		[item.userData fireEvent:@"dragstart" withObject:event];
 	}
 }
 
@@ -156,20 +139,12 @@ static const NSInteger kDashboardViewDefaultColumnCount = 3;
 	[event setObject:item.userData forKey:@"item"];
 	
 	if ([self.proxy _hasListeners:@"dragEnd"])
-	{	//TODO: Deprecate old event
+	{
 		[self.proxy fireEvent:@"dragEnd" withObject:event];
 	}
 	if ([item.userData _hasListeners:@"dragEnd"])
-	{	//TODO: Deprecate old event
+	{
 		[item.userData fireEvent:@"dragEnd" withObject:event];
-	}
-	if ([self.proxy _hasListeners:@"dragend"])
-	{
-		[self.proxy fireEvent:@"dragend" withObject:event];
-	}
-	if ([item.userData _hasListeners:@"dragend"])
-	{
-		[item.userData fireEvent:@"dragend" withObject:event];
 	}
 }
 

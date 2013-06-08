@@ -9,8 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "ASICacheDelegate.h"
 
-@class ASIHTTPRequest;
-
 @interface ASIDownloadCache : NSObject <ASICacheDelegate> {
 	
 	// The default cache policy for this cache

@@ -15,31 +15,8 @@
 
 -(void)dealloc
 {
-	TiThreadPerformOnMainThread(^{
-		[[NSNotificationCenter defaultCenter] removeObserver:self];
-	}, YES);
 	RELEASE_TO_NIL(defaultsObject);
 	[super dealloc];
-}
-
--(void)_listenerAdded:(NSString*)type count:(int)count
-{
-	if (count == 1 && [type isEqual:@"change"])
-	{
-		TiThreadPerformOnMainThread(^{
-			[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(NSUserDefaultsDidChange) name:NSUserDefaultsDidChangeNotification object:nil];
-		}, YES);
-	}
-}
-
--(void)_listenerRemoved:(NSString*)type count:(int)count
-{
-	if (count == 0 && [type isEqual:@"change"])
-	{
-		TiThreadPerformOnMainThread(^{
-			[[NSNotificationCenter defaultCenter] removeObserver:self name:NSUserDefaultsDidChangeNotification object:nil];
-		}, YES);
-	}
 }
 
 -(void)_configure
@@ -106,10 +83,6 @@ if (value==nil || value==[NSNull null]) {\
 	[defaultsObject synchronize]; \
 	return;\
 }\
-if ([self propertyExists:key] && [ [defaultsObject objectForKey:key] isEqual:value]) {\
-    return;\
-}\
-
 
 
 -(void)setBool:(id)args
@@ -123,7 +96,7 @@ if ([self propertyExists:key] && [ [defaultsObject objectForKey:key] isEqual:val
 {
 	SETPROP
 	[defaultsObject setDouble:[TiUtils doubleValue:value] forKey:key];
-	[defaultsObject synchronize];
+	[defaultsObject synchronize];	
 }
 
 -(void)setInt:(id)args
@@ -177,11 +150,6 @@ if ([self propertyExists:key] && [ [defaultsObject objectForKey:key] isEqual:val
 -(id)listProperties:(id)args
 {
 	return [[defaultsObject dictionaryRepresentation] allKeys];
-}
-
--(void) NSUserDefaultsDidChange
-{
-	[self fireEvent:@"change" withObject:nil];
 }
 
 @end

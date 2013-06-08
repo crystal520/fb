@@ -111,11 +111,7 @@ extern NSString * const TI_APPLICATION_DEPLOYTYPE;
 	{
 		readyState = NetworkClientStateUnsent;
 		autoRedirect = [[NSNumber alloc] initWithBool:YES];
-#if defined(DEBUG) || defined(DEVELOPER)
-			validatesSecureCertificate = [[NSNumber alloc] initWithBool:NO];
-#else
-			validatesSecureCertificate = [[NSNumber alloc] initWithBool:YES];
-#endif
+		validatesSecureCertificate = [[NSNumber alloc] initWithBool:NO];
 	}
 	return self;
 }
@@ -427,12 +423,6 @@ extern NSString * const TI_APPLICATION_DEPLOYTYPE;
 	[request setShouldAttemptPersistentConnection:keepAlive];
 	//handled in send, as now optional
 	//[request setShouldRedirect:YES];
-    
-	//TIMOB-5435 NTLM support
-	[request setUsername:[TiUtils stringValue:[self valueForKey:@"username"]]];
-	[request setPassword:[TiUtils stringValue:[self valueForKey:@"password"]]];
-	[request setDomain:[TiUtils stringValue:[self valueForKey:@"domain"]]];
-    
 	[self _fireReadyStateChange:NetworkClientStateOpened failed:NO];
 	[self _fireReadyStateChange:NetworkClientStateHeaders failed:NO];
 }
@@ -545,10 +535,9 @@ extern NSString * const TI_APPLICATION_DEPLOYTYPE;
 					}
 				}
 			}
-			else if ([arg isKindOfClass:[TiBlob class]]
-					 || [arg isKindOfClass:[TiFile class]])
+			else if ([arg isKindOfClass:[TiBlob class]])
 			{
-				TiBlob *blob = [arg isKindOfClass:[TiBlob class]] ? (TiBlob *)arg : [(TiFile *)arg blob];
+				TiBlob *blob = (TiBlob*)arg;
 				if ([blob type] == TiBlobTypeFile)
 				{
 					// could be large if file so let's tell the 
@@ -561,6 +550,7 @@ extern NSString * const TI_APPLICATION_DEPLOYTYPE;
 					[request appendPostData:data];
 				}
 			}
+			//TODO: support TiFile post 1.4
 		}
 	}
 	

@@ -15,8 +15,8 @@
         <target device="android">true</target>
         <target device="blackberry">false</target>
     </deployment-targets>
-    <sdk-version>3.0.2.GA</sdk-version>
-    <id>com.sid.fb</id>
+    <sdk-version>2.1.4.GA</sdk-version>
+    <id>com.roger.socialpus</id>
     <name>fb</name>
     <version>1.0</version>
     <publisher>webwerks</publisher>
@@ -63,5 +63,6 @@
         <module platform="commonjs" version="2.3.0">ti.cloud</module>
         <module platform="android">analytics.google</module>
         <module platform="iphone">analytics.google</module>
+        <module platform="iphone" version="1.2">mattapp.statusbar</module>
     </modules>
 </ti:app>

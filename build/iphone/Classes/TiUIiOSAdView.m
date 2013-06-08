@@ -1,6 +1,6 @@
 /**
  * Appcelerator Titanium Mobile
- * Copyright (c) 2009-2013 by Appcelerator, Inc. All Rights Reserved.
+ * Copyright (c) 2010 by fb, Inc. All Rights Reserved.
  * Licensed under the terms of the Apache Public License
  * Please see the LICENSE included with this distribution for details.
  * 
@@ -32,11 +32,6 @@ extern NSString * const TI_APPLICATION_ANALYTICS;
 		[self addSubview:adview];
 	}
 	return adview;
-}
-
-- (id)accessibilityElement
-{
-	return [self adview];
 }
 
 -(CGFloat)contentHeightForWidth:(CGFloat)value

@@ -1,6 +1,6 @@
 /**
  * Appcelerator Titanium Mobile
- * Copyright (c) 2009-2013 by Appcelerator, Inc. All Rights Reserved.
+ * Copyright (c) 2010-2011 by fb, Inc. All Rights Reserved.
  * Licensed under the terms of the Apache Public License
  * Please see the LICENSE included with this distribution for details.
  * 
@@ -66,15 +66,7 @@ TiUIiPadPopoverProxy * currentlyDisplaying = nil;
 
 -(CGSize)contentSize
 {
-    CGSize screenSize = [[UIScreen mainScreen] bounds].size;
-    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
-    
-    if (orientation == UIInterfaceOrientationLandscapeRight || orientation ==  UIInterfaceOrientationLandscapeLeft ) {
-        CGSize tempSize = CGSizeMake(screenSize.height, screenSize.width);
-        screenSize = tempSize;
-    }
-    
-	return SizeConstraintViewWithSizeAddingResizing([self layoutProperties], self, screenSize , NULL);
+	return SizeConstraintViewWithSizeAddingResizing([self layoutProperties], self, CGSizeZero, NULL);
 }
 
 -(UINavigationController *)navigationController

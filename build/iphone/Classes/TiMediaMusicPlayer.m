@@ -219,31 +219,22 @@
 // TODO: Change to KrollCallback properties for faster response times?
 -(void)stateDidChange:(NSNotification*)note
 {
-	if ([self _hasListeners:@"stateChange"]) {	//TODO: Deprecate old event.
+	if ([self _hasListeners:@"stateChange"]) {
 		[self fireEvent:@"stateChange"];
-	}
-	if ([self _hasListeners:@"statechange"]) {
-		[self fireEvent:@"statechange"];
 	}
 }
 
 -(void)playingDidChange:(NSNotification*)note
 {
-	if ([self _hasListeners:@"playingChange"]) {	//TODO: Deprecate old event.
+	if ([self _hasListeners:@"playingChange"]) {
 		[self fireEvent:@"playingChange"];
-	}
-	if ([self _hasListeners:@"playingchange"]) {
-		[self fireEvent:@"playingchange"];
 	}
 }
 
 -(void)volumeDidChange:(NSNotification*)note
 {
-	if ([self _hasListeners:@"volumeChange"]) {	//TODO: Deprecate old event.
+	if ([self _hasListeners:@"volumeChange"]) {
 		[self fireEvent:@"volumeChange"];
-	}
-	if ([self _hasListeners:@"volumechange"]) {
-		[self fireEvent:@"volumechange"];
 	}
 }
 

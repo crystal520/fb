@@ -15,20 +15,16 @@
 #include "TiViewProxy.h"
 
 @class TiUITableViewRowProxy;
-@class TiUITableViewSectionProxy;
 @interface TiUITableViewProxy : TiViewProxy
 {
 	NSMutableArray *sections;
 }
 -(void)setData:(id)args withObject:(id)properties;
 -(NSArray*)data;
-//Sections and Data are the sanitized version.
-@property(nonatomic,readwrite,copy) NSArray *sections;
--(int)sectionCount;
 
-#pragma mark NON-JS functionality
-//internalSections is until TODO: Stop JS from using ValueForKey
-@property(nonatomic,readwrite,retain) NSMutableArray *internalSections;
+//Sections is private. Data is the sanitized version.
+@property(nonatomic,readwrite,retain) NSMutableArray *sections;
+-(int)sectionCount;
 
 -(NSInteger)indexForRow:(TiUITableViewRowProxy*)row;
 -(NSInteger)sectionIndexForIndex:(NSInteger)theindex;
@@ -36,8 +32,6 @@
 -(NSIndexPath *)indexPathFromInt:(NSInteger)index;
 -(NSInteger)indexForIndexPath:(NSIndexPath *)path;
 
--(void)rememberSection:(TiUITableViewSectionProxy *)section;
--(void)forgetSection:(TiUITableViewSectionProxy *)section;
 
 @end
 

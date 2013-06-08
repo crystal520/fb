@@ -47,7 +47,7 @@
 - (id)initWithURL:(NSURL *)newURL
 {
 	self = [super initWithURL:newURL];
-	[self setPostFormat:TI_ASIURLEncodedPostFormat];
+	[self setPostFormat:ASIURLEncodedPostFormat];
 	[self setStringEncoding:NSUTF8StringEncoding];
 	return self;
 }
@@ -198,7 +198,7 @@
 		[self setShouldStreamPostDataFromDisk:YES];
 	}
 	
-	if ([self postFormat] == TI_ASIURLEncodedPostFormat) {
+	if ([self postFormat] == ASIURLEncodedPostFormat) {
 		[self buildURLEncodedPostBody];
 	} else {
 		[self buildMultipartFormDataPostBody];
@@ -275,7 +275,7 @@
 
 	// We can't post binary data using application/x-www-form-urlencoded
 	if ([[self fileData] count] > 0) {
-		[self setPostFormat:TI_ASIMultipartFormDataPostFormat];
+		[self setPostFormat:ASIMultipartFormDataPostFormat];
 		[self buildMultipartFormDataPostBody];
 		return;
 	}

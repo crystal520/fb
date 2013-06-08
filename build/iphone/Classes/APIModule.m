@@ -11,7 +11,6 @@
 #import "TiBase.h"
 #import "TiApp.h"
 #import "TiDebugger.h"
-#import "TiExceptionHandler.h"
 
 extern NSString * const TI_APPLICATION_DEPLOYTYPE;
 
@@ -60,10 +59,7 @@ extern NSString * const TI_APPLICATION_DEPLOYTYPE;
 
 -(id)transform:(id)arg
 {
-	if ([arg isKindOfClass:[NSDictionary class]]) {
-		return [[[[TiScriptError alloc] initWithDictionary:arg] autorelease] description];
-	}
-	return arg;
+	return [TiUtils exceptionMessage:arg];
 }
 
 -(void)debug:(NSArray*)args

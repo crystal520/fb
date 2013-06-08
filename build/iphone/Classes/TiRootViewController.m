@@ -105,7 +105,7 @@
 	*imageIdiom = UIUserInterfaceIdiomPhone;
 	// Default
     image = nil;
-    if ([TiUtils isRetinaFourInch]) {
+    if ([[UIScreen mainScreen] bounds].size.height == 568) {
         image = [UIImage imageNamed:@"Default-568h.png"];
         if (image!=nil) {
             return image;
@@ -525,12 +525,6 @@
     TiViewProxy<TiKeyboardFocusableView> *kfvProxy = (newOrientation != oldOrientation) ? [[keyboardFocusedProxy retain] autorelease] : nil;
 
     [self updateOrientationHistory:newOrientation];
-    
-	UIInterfaceOrientation latestOrientation = [self lastValidOrientation];
-	if ((latestOrientation == oldOrientation) && (latestOrientation == windowOrientation))
-	{
-		return;
-	}
     
     // We appear to do this in order to synchronize rotation animations with the keyboard.
     // But there is an interesting edge case where the status bar sometimes updates its orientation,

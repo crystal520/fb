@@ -17,8 +17,8 @@
 	BOOL requiresLayout;
     CGRect padding;
     BOOL repad;
-    UIControlContentVerticalAlignment verticalAlign;
-    CGRect initialLabelFrame;
+	
+	CGRect initialLabelFrame;
 }
 
 @property(nonatomic,getter=isHighlighted) BOOL     highlighted;          // default is NO

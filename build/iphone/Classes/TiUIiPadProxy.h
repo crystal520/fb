@@ -24,7 +24,7 @@
 	#import "TiUIiPadSplitWindowProxy.h"
 #endif
 #ifdef USE_TI_UIIPADDOCUMENTVIEWER
-	#import "TiUIiOSDocumentViewerProxy.h"
+	#import "TiUIiPadDocumentViewerProxy.h"
 #endif
 
 

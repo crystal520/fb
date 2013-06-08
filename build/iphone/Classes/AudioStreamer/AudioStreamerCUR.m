@@ -23,7 +23,7 @@
 #define BitRateEstimationMinPackets 50
 
 @interface AudioStreamerCUR ()
-@property (nonatomic, readwrite) AudioStreamerState state;
+@property (nonatomic, readwrite) TI_AudioStreamerState state;
 
 - (void)handlePropertyChangeForFileStream:(AudioFileStreamID)inAudioFileStream
 	fileStreamPropertyID:(AudioFileStreamPropertyID)inPropertyID
@@ -50,13 +50,13 @@
 
 #pragma mark Audio Callback Function Prototypes
 
-static void MyAudioQueueOutputCallbackCUR(void* inClientData, AudioQueueRef inAQ, AudioQueueBufferRef inBuffer);
-static void MyAudioQueueIsRunningCallbackCUR(void *inUserData, AudioQueueRef inAQ, AudioQueuePropertyID inID);
-static void MyPropertyListenerProcCUR(	void *							inClientData,
+void MyAudioQueueOutputCallbackCUR(void* inClientData, AudioQueueRef inAQ, AudioQueueBufferRef inBuffer);
+void MyAudioQueueIsRunningCallbackCUR(void *inUserData, AudioQueueRef inAQ, AudioQueuePropertyID inID);
+void MyPropertyListenerProcCUR(	void *							inClientData,
 								AudioFileStreamID				inAudioFileStream,
 								AudioFileStreamPropertyID		inPropertyID,
 								UInt32 *						ioFlags);
-static void MyPacketsProcCUR(				void *							inClientData,
+void MyPacketsProcCUR(				void *							inClientData,
 								UInt32							inNumberBytes,
 								UInt32							inNumberPackets,
 								const void *					inInputData,
@@ -64,7 +64,7 @@ static void MyPacketsProcCUR(				void *							inClientData,
 OSStatus MyEnqueueBufferCUR(AudioStreamerCUR* myData);
 
 #ifdef TARGET_OS_IPHONE			
-static void MyAudioSessionInterruptionListenerCUR(void *inClientData, UInt32 inInterruptionState);
+void MyAudioSessionInterruptionListenerCUR(void *inClientData, UInt32 inInterruptionState);
 #endif
 
 #pragma mark Audio Callback Function Implementations
@@ -175,7 +175,7 @@ void MyAudioSessionInterruptionListenerCUR(void *inClientData, UInt32 inInterrup
 //
 // Invoked when an error occurs, the stream ends or we have data to read.
 //
-static void ASReadStreamCallBackCUR
+void ASReadStreamCallBackCUR
 (
    CFReadStreamRef aStream,
    CFStreamEventType eventType,
@@ -318,7 +318,7 @@ static void ASReadStreamCallBackCUR
 // Parameters:
 //    anErrorCode - the error condition
 //
-- (void)failWithErrorCode:(AudioStreamerErrorCode)anErrorCode
+- (void)failWithErrorCode:(TI_AudioStreamerErrorCode)anErrorCode
 {
 	@synchronized(self)
 	{
@@ -367,7 +367,7 @@ static void ASReadStreamCallBackCUR
 // Parameters:
 //    anErrorCode - the error condition
 //
-- (void)setState:(AudioStreamerState)aStatus
+- (void)setState:(TI_AudioStreamerState)aStatus
 {
 	@synchronized(self)
 	{

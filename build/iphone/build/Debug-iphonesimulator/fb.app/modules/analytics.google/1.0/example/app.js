@@ -1,1 +1,44 @@
-/Users/webwerks/Documents/Titanium_Studio_Workspace/fb/modules/iphone/analytics.google/1.0/example/app.js
+var win = Ti.UI.createWindow({
+	backgroundColor:'white'
+});
+win.open();
+
+var GA = require('analytics.google');
+//GA.optOut = true;
+GA.debug = true;
+GA.trackUncaughtExceptions = true;
+
+var tracker = GA.getTracker("UA-40231898-1");
+tracker.trackEvent({
+	category: "category",
+	action: "test",
+	label: "label",
+	value: 1
+});
+tracker.trackSocial({
+	network: "facebook",
+	action: "action",
+	target: "target"
+});
+tracker.trackTiming({
+	category: "",
+	time: 10,
+	name: "",
+	label: ""
+});
+tracker.trackScreen("Home");
+
+var transaction = GA.makeTransaction({
+	id: "hi",
+	tax: 0.6,
+	shipping: 0,
+	revenue: 24.99 * 0.7
+});
+transaction.addItem({
+	sku: "abc",
+	name: "ABC123",
+	category: "product",
+	price: 0.99,
+	quantity: 1
+});
+tracker.trackTransaction(transaction);

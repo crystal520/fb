@@ -65,12 +65,12 @@
 @interface TiAnimation : TiProxy {
 @private
 	NSNumber	*zIndex;
-	id  left;
-	id  right;
-	id  top;
-	id  bottom;
-	id  width;
-	id  height;
+	NSNumber	*left;
+	NSNumber	*right;
+	NSNumber	*top;
+	NSNumber	*bottom;
+	NSNumber	*width;
+	NSNumber	*height;
 	NSNumber	*duration;
 	TiPoint		*center;
 	TiColor		*backgroundColor;
@@ -96,8 +96,9 @@
 	UIView* animatedView;
 		
 	// for autoreverse
-    TiAnimation* reverseAnimation;
-    BOOL isReverse;
+	LayoutConstraint autoreverseLayout;
+	UIView *autoreverseView;
+	id transformMatrix;
 }
 
 /**
@@ -106,18 +107,19 @@
 @property(nonatomic,assign,readwrite) NSObject<TiAnimationDelegate> *delegate;
 
 @property(nonatomic,readwrite,assign) UIView* animatedView;
+@property(nonatomic,readwrite,assign) UIView* autoreverseView;
+@property(nonatomic,readwrite,assign) id transformMatrix;
+@property(nonatomic,readonly) LayoutConstraint autoreverseLayout;
 @property(nonatomic,readonly) ListenerEntry* callback;
-@property(nonatomic,readwrite,assign) TiAnimation* reverseAnimation;
-@property(nonatomic,readwrite,assign) BOOL isReverse;
 
 // animatable properties against what is being animated
 @property(nonatomic,retain,readwrite) NSNumber	*zIndex;
-@property(nonatomic,retain,readwrite) id    left;
-@property(nonatomic,retain,readwrite) id    right;
-@property(nonatomic,retain,readwrite) id    top;
-@property(nonatomic,retain,readwrite) id    bottom;
-@property(nonatomic,retain,readwrite) id    width;
-@property(nonatomic,retain,readwrite) id    height;
+@property(nonatomic,retain,readwrite) NSNumber	*left;
+@property(nonatomic,retain,readwrite) NSNumber	*right;
+@property(nonatomic,retain,readwrite) NSNumber	*top;
+@property(nonatomic,retain,readwrite) NSNumber	*bottom;
+@property(nonatomic,retain,readwrite) NSNumber	*width;
+@property(nonatomic,retain,readwrite) NSNumber	*height;
 @property(nonatomic,retain,readwrite) NSNumber	*duration;
 @property(nonatomic,retain,readwrite) TiPoint	*center;
 @property(nonatomic,retain,readwrite) TiColor	*color;

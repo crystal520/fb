@@ -46,11 +46,6 @@
 	return searchView;
 }	
 
-- (id)accessibilityElement
-{
-	return [self searchBar];
-}
-
 -(void)frameSizeChanged:(CGRect)frame bounds:(CGRect)bounds
 {
 	[[self searchBar] setFrame:bounds];

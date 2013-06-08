@@ -23,7 +23,7 @@ typedef enum {
 } NetworkClientState;
 
 
-@interface TiNetworkHTTPClientProxy : TiProxy<TI_ASIHTTPRequestDelegate,TI_ASIProgressDelegate> 
+@interface TiNetworkHTTPClientProxy : TiProxy<ASIHTTPRequestDelegate,ASIProgressDelegate> 
 {
 @private
 	ASIFormDataRequest *request;

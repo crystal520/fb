@@ -17,7 +17,6 @@
 	TiWindowProxy *root;
 	TiWindowProxy *visibleProxy;
 	TiWindowProxy *closingProxy;
-    NSMutableArray* closingProxyArray;
 	BOOL opening;
 }
 

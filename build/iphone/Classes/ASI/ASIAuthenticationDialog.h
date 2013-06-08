@@ -10,26 +10,26 @@
 #import <UIKit/UIKit.h>
 @class ASIHTTPRequest;
 
-typedef enum TI__ASIAuthenticationType {
-	TI_ASIStandardAuthenticationType = 0,
-    TI_ASIProxyAuthenticationType = 1
-} TI_ASIAuthenticationType;
+typedef enum _ASIAuthenticationType {
+	ASIStandardAuthenticationType = 0,
+    ASIProxyAuthenticationType = 1
+} ASIAuthenticationType;
 
 @interface ASIAutorotatingViewController : UIViewController
 @end
 
 @interface ASIAuthenticationDialog : ASIAutorotatingViewController <UIActionSheetDelegate, UITableViewDelegate, UITableViewDataSource> {
-	TI_ASIHTTPRequest *request;
-	TI_ASIAuthenticationType type;
+	ASIHTTPRequest *request;
+	ASIAuthenticationType type;
 	UITableView *tableView;
 	UIViewController *presentingController;
 	BOOL didEnableRotationNotifications;
 }
-+ (void)presentAuthenticationDialogForRequest:(TI_ASIHTTPRequest *)request;
++ (void)presentAuthenticationDialogForRequest:(ASIHTTPRequest *)request;
 + (void)dismiss;
 
-@property (retain) TI_ASIHTTPRequest *request;
-@property (assign) TI_ASIAuthenticationType type;
+@property (retain) ASIHTTPRequest *request;
+@property (assign) ASIAuthenticationType type;
 @property (assign) BOOL didEnableRotationNotifications;
 @property (retain, nonatomic) UIViewController *presentingController;
 @end
