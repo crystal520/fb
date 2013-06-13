@@ -11,7 +11,6 @@ but.addEventListener('click',function()
 	({
 		url : "win.js",
 		backgroundColor : "gray",
-		layout : "vertical"
 	});
 	
 	winNew.open();
