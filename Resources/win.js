@@ -81,24 +81,27 @@ function loadAjax(methodBoxValue, optionValue, param2Value) {
 	}
 	data = JSON.stringify(data);
 
-	var frndsData= JSON.stringify(new Array(946 , 935));
+	var frndsData= JSON.stringify(new Array(1466 , 1542));
 
 	var multiArr = new Array("peoplevpnsc" , "en" , "1" , "");
 	var multiData = 
-	{
-		appCode 	: "peoplevpn_sc",
-		// lang 		: "en",
-		version 	: "1",
-		// timestamp 	: "2013-06-11 07:13:09",
-		
+	{ 
+		u : 
+		{
+			appname 	: "peoplevpn_sc",
+			terminal 	: "iphone",
+			protocol 	: "apns",
+			token	 	: "some token",
+			//uuid		: "uuid"
+		} 
 	}
 	multiData = JSON.stringify(multiData);
 
-	//var url = "http://dev.zone2serve.me/a.wb4.dev.zone2serve.me/multilingual/index.php/multilingual/peoplevpn_sc/en/1/2013-06-11 05:13:09";
-	var url = "http://dev.zone2serve.me/a.wb4.dev.zone2serve.me/multilingual/index.php/start/"+multiData;
+	var url = "http://dev.zone2serve.me/a.wb4.dev.zone2serve.me/cloodpush/index.php/user/1446/cloodevent/helo/"+frndsData;
+	// var url = "http://dev.zone2serve.me/a.wb4.dev.zone2serve.me/multilingual/index.php/multilingual/"+multiData;
 	url = encodeURI(url);
 	
-	Ti.API.info("url = " + url + "\n");
+	Ti.API.info("url = " + url + "\n" + "multiData = " + multiData );
 
 	var client = Ti.Network.createHTTPClient({
 		onload : function(e) {
@@ -115,8 +118,8 @@ function loadAjax(methodBoxValue, optionValue, param2Value) {
 	client.open("GET", url);
 	// client.setRequestHeader("Accept-Encoding", "gzip,deflate");
 	client.setRequestHeader('TOKEN', 'qwdqwdqwwq');
-	//client.setRequestHeader('HASHCODE', '3b87c97d15e8eb11e51aa25e9a5770e9');
+	client.setRequestHeader('HASHCODE', '3b87c97d15e8eb11e51aa25e9a5770e9');
 	// client.setRequestHeader('HASHCODE', '39fd5c0b483bfa0a5cbc0c92ebc2e04f');
-	client.setRequestHeader("Content_Type", "application/vnd.ok.multilingual.api.v1");
+	client.setRequestHeader("Content_Type", "application/vnd.ok.cloodpush.api.v1");
 	client.send();
 }

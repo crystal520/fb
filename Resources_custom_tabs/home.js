@@ -12,7 +12,8 @@ butn.addEventListener("click",function()
 		backgroundColor:'#000',
 		navBarHidden:false,
 		tabBarHidden:false,
-		url : "home2.js"
+		url : "home2.js",
+		barImage : "appicon.png"
 	});
 	
 	Ti.UI.currentTab.open(initWin4 , {animated : true});
